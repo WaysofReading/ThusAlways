@@ -1,36 +1,44 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 30, in script call
-    call opening_cutscene
-  File "game/script.rpy", line 60, in script
-    show hero1 at farleft
-  File "game/script.rpy", line 60, in <module>
-    show hero1 at farleft
-NameError: name 'farleft' is not defined
+  File "game/script.rpy", line 29, in script call
+    call backstory_cutscene from _call_backstory_cutscene
+  File "game/script.rpy", line 190, in script
+    play sound footsteps
+  File "renpy/common/000statements.rpy", line 301, in execute_play_sound
+    renpy.sound.play(_audio_eval(p["file"]),
+  File "renpy/common/000statements.rpy", line 33, in _audio_eval
+    return eval(expr, locals=store.audio.__dict__)
+  File "game/script.rpy", line 190, in <module>
+    play sound footsteps
+NameError: name 'footsteps' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 30, in script call
-    call opening_cutscene
-  File "game/script.rpy", line 60, in script
-    show hero1 at farleft
-  File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\ast.py", line 1113, in execute
-    show_imspec(self.imspec, atl=getattr(self, "atl", None))
-  File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\ast.py", line 1072, in show_imspec
-    at_list = [ renpy.python.py_eval(i) for i in at_list ]
-  File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\ast.py", line 1072, in <listcomp>
-    at_list = [ renpy.python.py_eval(i) for i in at_list ]
+  File "game/script.rpy", line 29, in script call
+    call backstory_cutscene from _call_backstory_cutscene
+  File "game/script.rpy", line 190, in script
+    play sound footsteps
+  File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\ast.py", line 1968, in execute
+    self.call("execute")
+  File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\ast.py", line 1950, in call
+    return renpy.statements.call(method, parsed, *args, **kwargs)
+  File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\statements.py", line 349, in call
+    return method(parsed, *args, **kwargs)
+  File "renpy/common/000statements.rpy", line 301, in execute_play_sound
+    renpy.sound.play(_audio_eval(p["file"]),
+  File "renpy/common/000statements.rpy", line 33, in _audio_eval
+    return eval(expr, locals=store.audio.__dict__)
   File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\python.py", line 1209, in py_eval
     return py_eval_bytecode(code, globals, locals)
   File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\python.py", line 1202, in py_eval_bytecode
     return eval(bytecode, globals, locals)
-  File "game/script.rpy", line 60, in <module>
-    show hero1 at farleft
-NameError: name 'farleft' is not defined
+  File "game/script.rpy", line 190, in <module>
+    play sound footsteps
+NameError: name 'footsteps' is not defined
 
 Windows-10-10.0.19045 AMD64
 Ren'Py 8.2.1.24030407
 The Thoughtful Jam Untitled VN 1.0
-Mon Apr 15 11:24:05 2024
+Mon Apr 15 22:57:41 2024

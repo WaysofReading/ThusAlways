@@ -2,17 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 39: expected statement.
-    read_all_tutorials = True
-                       ^
-
-File "game/script.rpy", line 106: expected statement.
-    read_gameplay_tutorial = True
-                           ^
-
-File "game/script.rpy", line 111: expected statement.
-    read_battle_tutorial = True
-                         ^
+File "game/script.rpy", line 214: end of line expected.
+    show overlay_pain with sshake, dissolve
+                                 ^
 
 Ren'Py Version: Ren'Py 8.2.1.24030407
-Mon Apr 15 11:39:58 2024
+Mon Apr 15 23:14:30 2024
