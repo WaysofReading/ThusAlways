@@ -2,9 +2,17 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 214: end of line expected.
-    show overlay_pain with sshake, dissolve
-                                 ^
+File "game/script.rpy", line 278: expected statement.
+    hero1 surprised
+                   ^
+
+File "game/script.rpy", line 279: expected statement.
+    hero2 surprised
+                   ^
+
+File "game/script.rpy", line 280: expected statement.
+    hero3 surprised
+                   ^
 
 Ren'Py Version: Ren'Py 8.2.1.24030407
-Mon Apr 15 23:14:30 2024
+Tue Apr 16 17:50:20 2024
