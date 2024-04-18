@@ -2,17 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 278: expected statement.
-    hero1 surprised
-                   ^
-
-File "game/script.rpy", line 279: expected statement.
-    hero2 surprised
-                   ^
-
-File "game/script.rpy", line 280: expected statement.
-    hero3 surprised
-                   ^
+File "game/scripts/day2.rpy", line 16: expected statement.
+    day2_hero1_seen = True
+                    ^
 
 Ren'Py Version: Ren'Py 8.2.1.24030407
-Tue Apr 16 17:50:20 2024
+Wed Apr 17 23:07:24 2024

@@ -1,44 +1,32 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 29, in script call
-    call backstory_cutscene from _call_backstory_cutscene
-  File "game/script.rpy", line 190, in script
-    play sound footsteps
-  File "renpy/common/000statements.rpy", line 301, in execute_play_sound
-    renpy.sound.play(_audio_eval(p["file"]),
-  File "renpy/common/000statements.rpy", line 33, in _audio_eval
-    return eval(expr, locals=store.audio.__dict__)
-  File "game/script.rpy", line 190, in <module>
-    play sound footsteps
-NameError: name 'footsteps' is not defined
+  File "game/script.rpy", line 31, in script call
+    call day2_morning from _call_day2_morning
+  File "game/scripts/day2.rpy", line 20, in script
+    if not all(day2_morning_hero1_seen, day2_morning_hero2_seen, day2_morning_hero3_seen):
+  File "game/scripts/day2.rpy", line 20, in <module>
+    if not all(day2_morning_hero1_seen, day2_morning_hero2_seen, day2_morning_hero3_seen):
+TypeError: all() takes exactly one argument (3 given)
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 29, in script call
-    call backstory_cutscene from _call_backstory_cutscene
-  File "game/script.rpy", line 190, in script
-    play sound footsteps
-  File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\ast.py", line 1968, in execute
-    self.call("execute")
-  File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\ast.py", line 1950, in call
-    return renpy.statements.call(method, parsed, *args, **kwargs)
-  File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\statements.py", line 349, in call
-    return method(parsed, *args, **kwargs)
-  File "renpy/common/000statements.rpy", line 301, in execute_play_sound
-    renpy.sound.play(_audio_eval(p["file"]),
-  File "renpy/common/000statements.rpy", line 33, in _audio_eval
-    return eval(expr, locals=store.audio.__dict__)
+  File "game/script.rpy", line 31, in script call
+    call day2_morning from _call_day2_morning
+  File "game/scripts/day2.rpy", line 20, in script
+    if not all(day2_morning_hero1_seen, day2_morning_hero2_seen, day2_morning_hero3_seen):
+  File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\ast.py", line 1842, in execute
+    if renpy.python.py_eval(condition):
   File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\python.py", line 1209, in py_eval
     return py_eval_bytecode(code, globals, locals)
   File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\python.py", line 1202, in py_eval_bytecode
     return eval(bytecode, globals, locals)
-  File "game/script.rpy", line 190, in <module>
-    play sound footsteps
-NameError: name 'footsteps' is not defined
+  File "game/scripts/day2.rpy", line 20, in <module>
+    if not all(day2_morning_hero1_seen, day2_morning_hero2_seen, day2_morning_hero3_seen):
+TypeError: all() takes exactly one argument (3 given)
 
 Windows-10-10.0.19045 AMD64
 Ren'Py 8.2.1.24030407
-The Thoughtful Jam Untitled VN 1.0
-Mon Apr 15 22:57:41 2024
+Untitled VN 1.0
+Wed Apr 17 23:41:33 2024
