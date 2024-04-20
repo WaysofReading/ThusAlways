@@ -1,32 +1,32 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 31, in script call
-    call day2_morning from _call_day2_morning
-  File "game/scripts/day2.rpy", line 20, in script
-    if not all(day2_morning_hero1_seen, day2_morning_hero2_seen, day2_morning_hero3_seen):
-  File "game/scripts/day2.rpy", line 20, in <module>
-    if not all(day2_morning_hero1_seen, day2_morning_hero2_seen, day2_morning_hero3_seen):
-TypeError: all() takes exactly one argument (3 given)
+  File "game/script.rpy", line 64, in script call
+    call day1_backstory_cutscene from _call_day1_backstory_cutscene
+  File "game/scripts/day1.rpy", line 118, in script
+    show overlay_pain with sshake_mid
+  File "game/scripts/day1.rpy", line 118, in <module>
+    show overlay_pain with sshake_mid
+NameError: name 'sshake_mid' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 31, in script call
-    call day2_morning from _call_day2_morning
-  File "game/scripts/day2.rpy", line 20, in script
-    if not all(day2_morning_hero1_seen, day2_morning_hero2_seen, day2_morning_hero3_seen):
-  File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\ast.py", line 1842, in execute
-    if renpy.python.py_eval(condition):
+  File "game/script.rpy", line 64, in script call
+    call day1_backstory_cutscene from _call_day1_backstory_cutscene
+  File "game/scripts/day1.rpy", line 118, in script
+    show overlay_pain with sshake_mid
+  File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\ast.py", line 1359, in execute
+    paired = renpy.python.py_eval(self.paired)
   File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\python.py", line 1209, in py_eval
     return py_eval_bytecode(code, globals, locals)
   File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\python.py", line 1202, in py_eval_bytecode
     return eval(bytecode, globals, locals)
-  File "game/scripts/day2.rpy", line 20, in <module>
-    if not all(day2_morning_hero1_seen, day2_morning_hero2_seen, day2_morning_hero3_seen):
-TypeError: all() takes exactly one argument (3 given)
+  File "game/scripts/day1.rpy", line 118, in <module>
+    show overlay_pain with sshake_mid
+NameError: name 'sshake_mid' is not defined
 
 Windows-10-10.0.19045 AMD64
 Ren'Py 8.2.1.24030407
 Untitled VN 1.0
-Wed Apr 17 23:41:33 2024
+Sat Apr 20 14:41:29 2024

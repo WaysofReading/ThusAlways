@@ -210,7 +210,10 @@ screen choice(items):
 
     vbox:
         for i in items:
-            textbutton i.caption action i.action
+            if " (disabled)" in i.caption:
+                textbutton i.caption.replace(" (disabled)", "") action None
+            else:
+                textbutton i.caption action i.action
 
 
 style choice_vbox is vbox

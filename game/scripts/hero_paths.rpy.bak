@@ -1,0 +1,284 @@
+label gavin_path:
+
+    menu:
+        "Duty":
+            call gavin_duty
+        "Happiness":
+            call gavin_happiness
+        "Family":
+            call gavin_family
+    return
+
+    label gavin_duty:
+        menu:
+            'It\'s a calling, not a certainty':
+                call gavin_duty_calling
+            'This is a sacred mission, indeed':
+                call gavin_duty_sacred_mission
+            'Do you really believe you\'re special?':
+                call gavin_duty_special
+        return
+
+        label gavin_duty_calling:
+            guide 'It\'s a calling, not a certainty'
+            gavin 'Yeah, I guess so. But it\'s a prophecy, isn\'t it?'
+            $ gavin_score = gavin_score + 1
+            return
+
+        label gavin_duty_sacred_mission:
+            guide 'This is a sacred mission, indeed'
+            gavin 'I think so, too'
+            $ gavin_score = gavin_score + 0
+            return
+
+        label gavin_duty_special:
+            guide 'Do you really believe you\'re special?'
+            gavin 'I was chosen to save the world!'
+            $ gavin_score = gavin_score - 1
+            return
+
+    label gavin_happiness:
+        menu:
+            'Happiness involves others':
+                call gavin_happiness_others
+            'Happiness is very personal':
+                call gavin_happiness_personal
+            'Happiness is fleeting':
+                call gavin_happiness_fleeting
+        return
+
+        label gavin_happiness_others:
+            guide '"Happiness involves others"'
+            gavin '"Ultimate happiness is when everyone is happy"'
+            $ gavin_score = gavin_score + 1
+            return
+
+        label gavin_happiness_personal:
+            guide '"Happiness is very personal"'
+            gavin '"Not everyone will like the same things"'
+            $ gavin_score = gavin_score + 0
+            return
+
+        label gavin_happiness_fleeting:
+            guide '"Happiness is fleeting"'
+            gavin '"Well, I was happy before you said that..."'
+            $ gavin_score = gavin_score - 1
+            return
+
+    label gavin_family:
+        menu:
+            'Family is a choice':
+                call gavin_family_choice
+            'Family is blood':
+                call gavin_family_blood
+            'Family is a hindrance':
+                call gavin_family_hindrance
+        return
+
+        label gavin_family_others:
+            guide '"Family is a choice"'
+            gavin '"Like my friends"'
+            $ gavin_score = gavin_score + 1
+            return
+
+        label gavin_family_blood:
+            guide '"Family is blood"'
+            gavin '"I guess that makes sense."'
+            $ gavin_score = gavin_score + 0
+            return
+
+        label gavin_family_hindrance:
+            guide '"Family is a hindrance"'
+            gavin '"My family is why I\'m here."'
+            $ gavin_score = gavin_score - 1
+            return
+
+label lance_path:
+
+    menu:
+        "Duty":
+            call lance_morality
+        "Happiness":
+            call lance_knowledge
+        "Family":
+            call lance_family
+    return
+
+    label lance_morality:
+        menu:
+            'How do you want to be remembered?':
+                call lance_morality_remembered
+            'It really depends on the circumstance':
+                call lance_morality_circumstance
+            'Morals are false things of a dead society':
+                call lance_morality_false
+        return
+
+        label lance_morality_remembered:
+            guide '"How do you want to be remembered?"'
+            lance '"A good point... though that could be what brings about one\'s end."'
+            $ lance_score = lance_score + 1
+            return
+
+        label lance_morality_circumstance:
+            guide '"It really depends on the circumstance"'
+            lance '"I suppose so. But is survival always the right choice..?"'
+            $ lance_score = lance_score + 0
+            return
+
+        label lance_morality_false:
+            guide '"Morals are false things of a dead society"'
+            lance '"That kind of thinking is why my family is dead."'
+            $ lance_score = lance_score - 1
+            return
+
+    label lance_knowledge:
+        menu:
+            'No amount of harm is acceptable, but we can still learn from our mistakes':
+                call lance_knowledge_learn_from_mistakes
+            'We should try to avoid causing harm in the pursuit of knowledge':
+                call lance_knowledge_avoid_harm
+            'Everybody suffers whether we learn something or not':
+                call lance_knowledge_everybody_suffers
+        return
+
+        label lance_knowledge_learn_from_mistakes:
+            guide '"No amount of harm is acceptable, but we can still learn from our mistakes"'
+            lance '"Ultimate happiness is when everyone is happy"'
+            $ lance_score = lance_score + 1
+            return
+
+        label lance_knowledge_avoid_harm:
+            guide '"We should try to avoid causing harm in the pursuit of knowledge"'
+            lance '"Well, that\'s obvious. I was asking if the knowledge learned from suffering still has value, or if it\'s tainted at its core."'
+            $ lance_score = lance_score + 0
+            return
+
+        label lance_knowledge_everybody_suffers:
+            guide '"Everybody suffers whether we learn something or not"'
+            lance '"So everything just suffers pointlessly?"'
+            $ lance_score = lance_score - 1
+            return
+
+    label lance_family:
+        menu:
+            'Maybe, but they\'re not common.':
+                call lance_relationships_not_common
+            'Of course there is. Love is unconditional.':
+                call lance_relationships_love_is_unconditional
+            'Everything has a condition.':
+                call lance_relationships_everything_is_conditional
+        return
+
+        label lance_relationships_not_common:
+            guide '"Maybe, but they\'re not common."'
+            lance '"... What would one look like..?"'
+            $ lance_score = lance_score + 1
+            return
+
+        label lance_relationships_love_is_unconditional:
+            guide '"Of course there is. Love is unconditional."'
+            lance '"All love? I somehow doubt that."'
+            $ lance_score = lance_score + 0
+            return
+
+        label lance_relationships_everything_is_conditional:
+            guide '"Everything has a condition."'
+            lance '"Maybe so. But... I would have liked to have thought otherwise."'
+            $ lance_score = lance_score - 1
+            return
+
+label morgan_path:
+
+    menu:
+        "Duty":
+            call morgan_life_value
+        "Happiness":
+            call morgan_preservation
+        "Family":
+            call morgan_flaws
+    return
+
+    label morgan_life_value:
+        menu:
+            'It\'s what you choose it to be.':
+                call morgan_life_value_choice
+            'All life is priceless':
+                call morgan_life_value_priceless
+            'Life is meaningless regardless of its form':
+                call morgan_life_value_meaningless
+        return
+
+        label morgan_life_value_choice:
+            guide '"It\'s what you choose it to be."'
+            morgan '"That\'s a lot of power to put in one person\'s hand."'
+            $ morgan_score = morgan_score + 1
+            return
+
+        label morgan_life_value_priceless:
+            guide '"All life is priceless"'
+            morgan '"In the cosmic scheme of things, maybe..."'
+            $ morgan_score = morgan_score + 0
+            return
+
+        label morgan_life_value_meaningless:
+            guide '"Life is meaningless regardless of its form"'
+            morgan '"... That\'s not promising."'
+            $ morgan_score = morgan_score - 1
+            return
+
+    label morgan_preservation:
+        menu:
+            '"To preserve memories of ourselves and the people we cared for"':
+                call morgan_preservation_memories
+            'To record history, so we can remember our roots and avoid repeating the past':
+                call morgan_preservation_history
+            '"To remember our accomplishments and triumphs over our foes."':
+                call morgan_preservation_triumph
+        return
+
+        label morgan_preservation_memories:
+            guide '"To preserve memories of ourselves and the people we cared for"'
+            morgan '"... That\'s... one way to look at it."'
+            $ morgan_score = morgan_score + 1
+            return
+
+        label morgan_preservation_history:
+            guide '"To record history, so we can remember our roots and avoid repeating the past"'
+            morgan '"Have we really learned anything though?"'
+            $ morgan_score = morgan_score + 0
+            return
+
+        label morgan_preservation_triumph:
+            guide '"To remember our accomplishments and triumphs over our foes."'
+            morgan '"So it\'s all just one big contest?"'
+            $ morgan_score = morgan_score - 1
+            return
+
+    label morgan_flaws:
+        menu:
+            'Our flaws are meant to be overcome, not define us.':
+                call morgan_flaws_overcome
+            'There are other things that define us aside from flaws':
+                call morgan_flaws_other_things
+            'Yes. Our flaws are as ingrained as our DNA':
+                call morgan_flaws_ingrained
+        return
+
+        label morgan_flaws_overcome:
+            guide '"Our flaws are meant to be overcome, not define us."'
+            morgan '"That\'s a long road to travel."'
+            $ morgan_score = morgan_score + 1
+            return
+
+        label morgan_flaws_other_things:
+            guide '"There are other things that define us aside from flaws."'
+            morgan '"It feels like the flaws outweigh whatever might be good."'
+            $ morgan_score = morgan_score + 0
+            return
+
+        label morgan_flaws_ingrained:
+            guide '"Yes. Our flaws are as ingrained as our DNA."'
+            morgan '"Even for me, that\'s absurdly pessimistic."'
+            $ morgan_score = morgan_score - 1
+            return

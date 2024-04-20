@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/scripts/day2.rpy", line 16: expected statement.
-    day2_hero1_seen = True
-                    ^
+File "game/script.rpy", line 26: Line is indented, but the preceding define statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
+    show gavin at 
+    ^
 
 Ren'Py Version: Ren'Py 8.2.1.24030407
-Wed Apr 17 23:07:24 2024
+Sat Apr 20 14:36:34 2024

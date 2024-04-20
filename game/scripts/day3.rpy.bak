@@ -1,0 +1,34 @@
+define day3_morning_gavin_seen = False
+define day3_morning_lance_seen = False
+define day3_morning_morgan_seen = False
+
+label day3_morning:
+
+    label day3_morning_hero_choice:
+        menu:
+            'hero 1':
+                call gavin_path
+                $ day3_morning_gavin_seen = True
+            'hero 2':
+                call lance_path
+                $ day3_morning_lance_seen = True
+            'hero 3':
+                call morgan_path
+                $ day3_morning_morgan_seen = True
+
+        if not all([day3_morning_gavin_seen, day3_morning_lance_seen, day3_morning_morgan_seen]):
+            jump day3_morning_hero_choice
+
+    return
+
+label day3_combat:
+    pass
+    return
+
+label day3_dinner:
+    pass
+    return
+
+label day3_dream:
+    pass
+    return

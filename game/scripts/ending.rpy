@@ -1,36 +1,36 @@
 label ending_the_truth:
-    pass
+    "ENDING - THE TRUTH"
     return
 
 label ending_the_end_of_the_world:
-    pass
+    "ENDING - THE END OF THE WORLD"
     return
 
 label ending_boss:
-    pass
+    "ENDING - BOSS COMBAT"
     return
 
 label ending_choices:
-
-    if hero1_score >= 2 and hero2_score >= 2 and hero3_score >= 2:
-        call ending_good
-    elif hero1_score <= -2 and hero2_score <= -2 and hero3_score <= -2:
-        call ending_bad
+    "ENDING - CHOICE TREE"
+    if gavin_score >= 2 and lance_score >= 2 and morgan_score >= 2:
+        call ending_good from _call_ending_good
+    elif gavin_score <= -2 and lance_score <= -2 and morgan_score <= -2:
+        call ending_bad from _call_ending_bad
     else:
-        call ending_neutral
+        call ending_neutral from _call_ending_neutral
 
     label ending_good:
-        pass
+        "ENDING - GOOD"
         return
 
     label ending_neutral:
-        pass
+        "ENDING - NEUTRAL"
         return
 
     label ending_bad:
-        pass
+        "ENDING - BAD"
         return
 
 label ending_credits:
-    pass
+    "ENDING - CREDITS"
     return

@@ -1,3 +1,3 @@
 label day5_morning:
-    pass
+    "DAY 5 - MORNING"
     return
