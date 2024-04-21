@@ -21,6 +21,15 @@ define hero4 = DynamicCharacter('hero4_name')
 define hero4_name = '???'
 define hero4_score = 0
 
+define radio = DynamicCharacter('radio_name')
+define radio_name = 'Radio'
+
+define gwen = DynamicCharacter('gwen_name')
+define gwen_name = 'Gwen'
+
+define mother = DynamicCharacter('mother_name')
+define mother_name = 'Mother'
+
 ## Custom sprite positions
 
 define grouped_left_pos1 = Position(xpos=0.2, ypos=0.65)
@@ -67,7 +76,7 @@ label start:
 
     # call day2_morning from _call_day2_morning
     # call day2_combat from _call_day2_combat
-    call day2_dinner from _call_day2_dinner
+    # call day2_dinner from _call_day2_dinner
     call day2_dream from _call_day2_dream
 
     call day3_morning from _call_day3_morning

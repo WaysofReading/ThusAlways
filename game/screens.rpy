@@ -1614,12 +1614,12 @@ style slider_slider:
 
 ## User-defined screens
 
-### https://www.renpy.org/wiki/renpy/doc/cookbook/Shake_effect
+
 
 init:
     python:
         import math
-
+        # https://www.renpy.org/wiki/renpy/doc/cookbook/Shake_effect
         class Shaker(object):
         
             anchors = {

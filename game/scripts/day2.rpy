@@ -30,7 +30,7 @@ label day2_combat:
 
     guide 'Where did this kid learn to talk? A dictionary? Where would he even find a book of that size?'
     guide 'Annoying as it is, at least he talks enough for himself and the girl.'
-    guide 'Come to think of it… I think I’ve hardly heard her speak ten words.'
+    guide 'Come to think of it... I think I’ve hardly heard her speak ten words.'
 
     guide '“Girl.”'
 
@@ -61,6 +61,9 @@ label day2_combat:
     guide '“Show me your techniques, all of you.”'
 
     ## BEGIN COMBAT with Training Dummy
+
+    # call combat_training_dummy
+
     ## AFTER COMBAT, the HEROES are bored and unimpressed.
 
     scene fnc_cabinfp_day1 with fade
@@ -85,13 +88,16 @@ label day2_combat:
 
     guide '{b}He wants to grow. He wants to become powerful. We need that.{/b}'
 
-    guide '“…”'
+    guide '“...”'
     guide '“You want more of a fight? Fine.”'
 
-    guide 'It’s been a while since I cast this spell…'
-    guide 'Spells were more Gwen’s thing. We’ll see if I remember…'
+    guide 'It’s been a while since I cast this spell...'
+    guide 'Spells were more Gwen’s thing. We’ll see if I remember...'
 
     ## BEGIN COMBAT with Training Dummy (Enhanced)
+
+    # call combat_training_dummy_enhanced
+
     ## AFTER COMBAT, LANCE is far more satisfied.
 
     scene fnc_cabinfp_day1 with fade
@@ -102,11 +108,13 @@ label day2_combat:
 
     lance '“Better. We actually used our skills a bit.”'
 
+    show gavin happy
     gavin '“I guess that was pretty fun, actually.”'
+    show gavin
     gavin '“But Guide, why didn’t you do that before?”'
 
     guide '“I hoped you’d give up and leave.”'
-    guide '“Your friend’s conviction is very… persuasive.”'
+    guide '“Your friend’s conviction is very... persuasive.”'
 
     show lance happy at sprite_bounce_light
 
@@ -172,7 +180,7 @@ label day2_dinner:
     guide 'A harrowing thought. Though the implication that they haven’t resorted to cannibalism yet is promising.'
     guide 'However, I know little else about them, these children in my home. I know it’s common courtesy to make polite conversation; I haven’t forgotten my manners.'
     guide 'But knowing what’s to come, it feels pointless to ask.'
-    guide '… Then again, it would be better than this awkward silence.'
+    guide '... Then again, it would be better than this awkward silence.'
 
     guide '“... Was it the process of being Chosen that brought you together?”'
 
@@ -198,7 +206,7 @@ label day2_dinner:
 
     morgan '“...”'
 
-    gavin '“She… doesn’t like to talk about the time before she was with me.”'
+    gavin '“She... doesn’t like to talk about the time before she was with me.”'
 
     guide '{b}Not that it matters. None of their little stories matter.{/b}'
     guide '{b}What matters is what they will become.{/b}'
@@ -232,7 +240,7 @@ label day2_dinner:
     label day2_dinner_wont_understand:
         guide '“The finer details don’t matter, I suppose. It may be too complex for you to fully comprehend.”'
 
-        gavin '“This is our sacred mission! We know we have to fight the Hidden Darkness… uh, and I guess the ‘hidden’ part means we have to find it.”'
+        gavin '“This is our sacred mission! We know we have to fight the Hidden Darkness... uh, and I guess the ‘hidden’ part means we have to find it.”'
         gavin '“Which I figured you’d help us with when we’re ready.”'
         gavin '“But we don’t know how to find it, or how to fight it.”'
         gavin '“If we’re Chosen, there must be something special about us that no one else has, otherwise, someone else would have found and destroyed it by now, right?”'
@@ -252,7 +260,7 @@ label day2_dinner:
         guide '“It started with one person. Just one.”'
         guide '“It wasn’t born out of malice, or hate. It wasn’t created intentionally, but it didn’t come from nothing, either. The Hidden Darkness is a monster, yes, but it was a monster no one wished upon anyone.”'
         guide '“The Hidden Darkness was born from sorrow, distrust, and a loss of faith and hope.”'
-        guide '“The Hidden Darkness was born as a response to the moral corruption of the world, and the people in it. When the corruption became too great, and the forces of good became too scattered and weak to oppose it, that is what birthed the Darkness. Guide “When leaders failed their people beyond retribution, when nature teetered too far to one side of extinction, and when love and trust became commodities rather than gifts…”'
+        guide '“The Hidden Darkness was born as a response to the moral corruption of the world, and the people in it. When the corruption became too great, and the forces of good became too scattered and weak to oppose it, that is what birthed the Darkness. Guide “When leaders failed their people beyond retribution, when nature teetered too far to one side of extinction, and when love and trust became commodities rather than gifts...”'
         guide '“The combination of those failures were the catalyst for a heartbreak too great to mend. And thus, that was the catalyst that brought life to the Darkness, and in the shadows it began to spread.”'
         guide '“Not only did it feed off of the negative energy that pervaded the world, it empowered it. The feedback loop enabled the Darkness to spread like a disease– and it presented itself as such.”'
         guide '“Whatever it touched, it infected, or killed outright. And those that it infected, it changed.”'
@@ -267,24 +275,24 @@ label day2_dinner:
 
         morgan '“They’re mutated masses of dangerous energy and necrotic aura.”'
         morgan '“They’re hostile to any and all life– human, animal, fungi– all of it.”'
-        morgan '“And it would rather die than flee from a fight… because it knows if it can hurt you and get in your blood, even if it’s dead… it can kill you.”'
+        morgan '“And it would rather die than flee from a fight... because it knows if it can hurt you and get in your blood, even if it’s dead... it can kill you.”'
 
         guide '“I’m impressed.”'
 
         gavin '“So if the Corrupted are part of the Hidden Darkness, then destroying the Darkness would destroy all the corrupted, too?”'
 
-        guide '“Of that, I’m not entirely sure. In a sense, I suppose the answer is yes…”'
+        guide '“Of that, I’m not entirely sure. In a sense, I suppose the answer is yes...”'
 
         gavin '“Then how do we find it? How do we defeat it? The sooner we can do that, the sooner we can save everyone!”'
 
-        guide 'Were it so simple…'
+        guide 'Were it so simple...'
 
         guide '{b}They will fight it. It is their destiny.{/b}'
 
-        guide '“There will come a day when you will look upon someone, something, or even just a shadow in a corner… and you will know.”'
+        guide '“There will come a day when you will look upon someone, something, or even just a shadow in a corner... and you will know.”'
         guide '“One day, all it will take is a glance, and you will see it.”'
         guide '“It’s the ‘Hidden Darkness’ for a reason, after all.”'
-        guide '“As for its defeat…”'
+        guide '“As for its defeat...”'
         guide '“... I don’t know.”'
 
         lance '“You don’t know?”'
@@ -299,7 +307,7 @@ label day2_dinner:
     hide morgan
     with easeoutleft
     
-    guide '{b}Those poor children…{/b}'
+    guide '{b}Those poor children...{/b}'
     guide '{b}They’ll be in for quite the shock when their eyes finally open.{/b}'
     guide '{b}I remember when you saw it for the first time–{/b}'
 
@@ -313,5 +321,134 @@ label day2_dinner:
     return
 
 label day2_dream:
-    "DAY 2 - DREAM"
+    # FADE IN to misty background.
+    scene backdrop_mist
+    with fade
+    
+    # RADIO sound effect (with unintelligible dialogue) in the background.
+    play music bgm_radio_chatter
+
+    radio '“... The promised aid to the west has been postponed for another month due to shortages in both food and fuel across the coast. Reports state that if help does not arrive in time, another few thousand lives will be lost.”'
+    radio '“In other news, the epidemic in the chain islands has reached its all-time peak, with the number of infected totaling over half of its population...”'
+
+    mother '“Please, turn that thing off. I won’t want to hear about it.”'
+
+    guide '“Sorry, Mom.”'
+
+    # The RADIO sound effect ends. GWEN, friend to the GUIDE, is with him, wherever he currently is.
+    stop music
+
+    gwen '“I mean, we could go listen to it elsewhere?”'
+
+    mother '“I don’t want you kids worrying about that kind of stuff. Let that be our job. Your job is to focus on your schoolwork, play outside when the sun shines, and go to bed at a reasonable hour.”'
+
+    guide 'Even then, I knew the reason the world was in such a state was because the leaders of our world hadn’t been concerned about what mattered to begin with.'
+    guide 'And I knew that my mother knew.'
+    guide 'What she didn’t know, was that I knew. That I wasn’t a fool. That Gwen wasn’t a fool.'
+    guide 'We all knew something was wrong before things got worse.'
+
+    gwen '“Ma’am, you say that as if going to bed at a reasonable hour has ever been a reasonable request.”'
+    gwen '“These essays don’t type themselves.”'
+
+    guide '“Gwen, you can hardly type the word ‘the’ without looking down at the keyboard. Doesn’t your mom still help you?”'
+
+    gwen '“Oh, shut up.”'
+
+    mother '“Gwen, we don’t use that language in this house.”'
+
+    gwen '“Sorry, ma’am.”'
+
+    guide '{b}Mother always was precious like that.{/b}'
+
+    guide 'I don’t need your sarcasm. It’s bad enough you decided to wake up the moment those kids were on my doorstep.'
+
+    guide '{b}Don’t lie to yourself. You know I was awake long before that.{/b}'
+
+    guide '“We could go to the park across the street or something.”'
+
+    mother '“If you’re going to the park, ask Lucas next door if he can go too.”'
+
+    guide '“Lucas? Lucas is always sick, Mom.”'
+
+    mother '“That doesn’t mean you shouldn’t ask.”'
+    mother '“Besides, I know you kids go over there to just sit on the grass anyways. That’s not out of Lucas’ capabilities.”'
+
+    guide 'She didn’t know Lucas hadn’t been out of the house in three weeks.'
+    guide 'The air quality was just too hard on his lungs.'
+
+    guide '{b}It’s amazing, then, what the bombs dropping did for his body, isn’t it? All it took was a little war to get him running.{/b}'
+
+    guide 'He barely made it from one day to the next! If his family had been able to afford his medical treatments in the first place, he–!'
+    guide '...'
+    guide 'I am not humoring you.'
+
+    guide '{b}I don’t need you to.{/b}'
+    guide '{b}You and I both know well the start of the end of the world was the greatest medicine Lucas ever received.{/b}'
+    guide '{b}So much of it was all in his head...{/b}'
+    guide '{b}When all the king’s horses and all the king’s men couldn’t put Humpty together again, and then the king and his men vanished one by one and the world became free...{/b}'
+    guide '{b}You remember how nice the air was then, don’t you?{/b}'
+
+    guide 'People died. Hundreds of thousands– millions.'
+    guide 'The death of corrupt officials and governments could never justify that level of loss.'
+    guide 'What was left behind for the next generations?'
+    guide 'Nothing.'
+
+    guide '{b}{i}Opportunity.{/i}{/b}'
+
+    guide 'Opportunity?!'
+
+    menu day2_dream_choices:
+        "It was trauma.":
+            jump day2_dream_choices_trauma
+        "It was ruins.":
+            jump day2_dream_choices_ruins
+        "It was the cycle":
+            jump day2_dream_choices_cycle
+
+    label day2_dream_choices_trauma:
+        guide 'It was the retraction of everything they’d ever promised us.'
+        guide 'Security, safety, a future. Family.'
+        guide 'They told us stories of the wars they fought, and the wars their parents fought, and they promised how we’d never go through what they went through.'
+        guide 'They told us that’s exactly what they fought for. And maybe that’s what they were told, too.'
+        guide 'But that was never what all those wars were for.'
+        guide 'It was all... worthless.'
+        jump day2_dream_choices_reconvene
+
+    label day2_dream_choices_ruins:
+        guide 'Everything they’d built up for us, for themselves, was on fracturing foundations already, but with the end of the world, all of it was torn down overnight.'
+        guide 'Nothing was left to rebuild with. There was nothing to take the opportunity of.'
+        guide 'There were no institutions to continue or reform, no communities to reunite. All the good there was, was stripped bare and destroyed indiscriminately with the bad. '
+        guide 'Even our morals were shattered; what were they worth if they couldn’t keep everything together to begin with?'
+        jump day2_dream_choices_reconvene
+
+    label day2_dream_choices_cycle:
+        guide 'It was the byproduct of the cycle that has been repeating itself since time immemorial. '
+        guide 'A broken promise here, a shifting of the goalposts there.'
+        guide 'The delusion of endless growth could only sustain itself until there was nothing left to grow with.'
+        guide 'Empires rose, and then when things could settle down, become simple in a life of plenty, a false scarcity was imposed. And then when the false scarcity became true because they starved themselves to death in their self-imposed emotional celibacy, they fell.'
+        guide 'When true scarcity arrived, and there was no one and nothing left to reverse it, it could only mean certain death.'
+        jump day2_dream_choices_reconvene
+
+    label day2_dream_choices_reconvene:
+        guide 'There was no opportunity in that.'
+
+        guide '{b}As always, you miss the bigger picture.{/b}'
+        guide '{b}Every generation has its growing pains. That’s what makes them stronger than the last, and those that aren’t were never meant to continue regardless.{/b}'
+        guide '{b}For Lucas, those growing pains gave him his future. How delusional for you not to see that!{/b}'
+
+        guide 'It broke him.'
+
+        guide '{b}And reformed him into something that could survive.{/b}'
+        guide '{b}You don’t think this will end the same way?{/b}'
+
+        guide 'To what end?'
+        guide '...'
+        guide '...'
+
+    # FADE TO BLACK
+    scene backdrop_black with dissolve
+
+    guide 'Does it always have to be this way?'
+
+    # END SCENE
     return

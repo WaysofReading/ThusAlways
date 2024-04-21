@@ -2,9 +2,49 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 26: Line is indented, but the preceding define statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
-    show gavin at 
-    ^
+File "game/scripts/day3.rpy", line 17: end of line expected.
+    guide '“Gods, you’re an impatient little brat.”'Guide “Hold your tongue for longer than five seconds and you might actually learn something.”
+                                                    ^
+
+File "game/scripts/day3.rpy", line 41: end of line expected.
+    guide '“Listen up. I told you all why we came out here, now I will tell you again.”'Guide “If you want to have any chance of finding and defeating the Hidden Darkness, you must learn to find its vestiges in unlikely places.”
+                                                                                        ^
+
+File "game/scripts/day3.rpy", line 45: end of line expected.
+    guide '“Precisely.”'Guide “All the darkness can do is warp, corrupt, and consume, until there’s nothing left to change. Then, it moves on to where it can find something new to destroy.”
+                        ^
+
+File "game/scripts/day3.rpy", line 46: end of line expected.
+    guide '“That does not mean it doesn’t haunt what it leaves behind.”'Guide “Listen closely. Attune yourself to the environment. Concentrate hard enough, and you will hear the ghosts of the past that could not move on.”
+                                                                        ^
+
+File "game/scripts/day3.rpy", line 62: end of line expected.
+    guide 'I can already feel the chill of tragedy and pain deep in the walls.'Guide This place may be more than they’re ready to handle…
+                                                                               ^
+
+File "game/scripts/day3.rpy", line 98: expected statement.
+    The boys do stop arguing, looking surprised. Meanwhile, the sound of something dropping heavily around the corner, followed by a strange groaning.
+                            ^
+
+File "game/scripts/day3.rpy", line 106: end of line expected.
+    guide '“Just– focus on the sensation of its aura. Pay attention to the way you’re feeling. How the air has shifted.”'Guide “Consider what must have transpired here for such corruption to take root…”
+                                                                                                                         ^
+
+File "game/scripts/day3.rpy", line 107: end of line expected.
+    guide '“And know that you can find it anywhere if you look hard enough.”'Guide “Nothing is sacred.”
+                                                                             ^
+
+File "game/scripts/day3.rpy", line 126: end of line expected.
+    guide '“They do originate from the Darkness, yes.”'Guide “But just like the Hidden Darkness begins within the heart and soul of a single person, the corruption within the Darkness also requires a host to grow and spread.”
+                                                       ^
+
+File "game/scripts/day3.rpy", line 146: end of line expected.
+    guide '“No one is immune to falling to the Darkness.”'Guide “That’s why you must learn to be aware of it in every corner it may lurk, building or soul.
+                                                          ^
+
+File "game/scripts/day3.rpy", line 148: expected statement.
+    Everyone pauses for a moment in contemplation.
+                                 ^
 
 Ren'Py Version: Ren'Py 8.2.1.24030407
-Sat Apr 20 14:36:34 2024
+Sat Apr 20 19:47:14 2024
