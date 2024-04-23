@@ -1612,10 +1612,6 @@ style slider_slider:
     variant "small"
     xsize 900
 
-## User-defined screens
-
-
-
 init:
     python:
         import math
