@@ -1,34 +1,36 @@
 ﻿
 label start:
-    # call combat_test
-    call day0_guide_backstory from _call_day0_guide_backstory
-    call day1_backstory_cutscene from _call_day1_backstory_cutscene
-    call day1_combat_intro from _call_day1_combat_intro
-    call day1_post_combat from _call_day1_post_combat
+    # Implement warp menu for different chapters/sections
 
-    call day2_morning from _call_day2_morning
-    call day2_combat from _call_day2_combat
-    call day2_dinner from _call_day2_dinner
-    call day2_dream from _call_day2_dream
+    call combat
+    # call day0_guide_backstory from _call_day0_guide_backstory
+    # call day1_backstory_cutscene from _call_day1_backstory_cutscene
+    # call day1_combat_intro from _call_day1_combat_intro
+    # call day1_post_combat from _call_day1_post_combat
 
-    call day3_morning from _call_day3_morning
-    call day3_combat from _call_day3_combat
-    call day3_dinner from _call_day3_dinner
-    call day3_dream from _call_day3_dream
-    call day3_night_combat from _call_day3_night_combat
+    # call day2_morning from _call_day2_morning
+    # call day2_combat from _call_day2_combat
+    # call day2_dinner from _call_day2_dinner
+    # call day2_dream from _call_day2_dream
 
-    call day4_morning from _call_day4_morning
-    call day4_combat from _call_day4_combat
-    call day4_dinner from _call_day4_dinner
-    call day4_dream from _call_day4_dream
+    # call day3_morning from _call_day3_morning
+    # call day3_combat from _call_day3_combat
+    # call day3_dinner from _call_day3_dinner
+    # call day3_dream from _call_day3_dream
+    # call day3_night_combat from _call_day3_night_combat
 
-    call day5_morning from _call_day5_morning
+    # call day4_morning from _call_day4_morning
+    # call day4_combat from _call_day4_combat
+    # call day4_dinner from _call_day4_dinner
+    # call day4_dream from _call_day4_dream
 
-    call ending_the_truth from _call_ending_the_truth
-    call ending_the_end_of_the_world from _call_ending_the_end_of_the_world
-    call ending_boss from _call_ending_boss
+    # call day5_morning from _call_day5_morning
 
-    call ending_credits from _call_ending_credits
+    # call ending_the_truth from _call_ending_the_truth
+    # call ending_the_end_of_the_world from _call_ending_the_end_of_the_world
+    # call ending_boss from _call_ending_boss
+
+    # call ending_credits from _call_ending_credits
     call close from _call_close
     return
 
@@ -39,23 +41,23 @@ label close:
 # Initialize game-scope variables
 
 ## Character variables
-
+# Set defaults to real names and change to '???' in day0/day1
 define guide = DynamicCharacter('guide_name')
-define guide_name = '???'
+define guide_name = 'Guide'
 
 define guide_dark = DynamicCharacter('guide_dark_name', what_prefix='{b}', what_suffix='{/b}')
-define guide_dark_name = '???'
+define guide_dark_name = 'Guide (?)'
 
 define gavin = DynamicCharacter('gavin_name')
-define gavin_name = '???'
+define gavin_name = 'Gavin'
 define gavin_score = 0
 
 define lance = DynamicCharacter('lance_name')
-define lance_name = '???'
+define lance_name = 'Lance'
 define lance_score = 0
 
 define morgan = DynamicCharacter('morgan_name')
-define morgan_name = '???'
+define morgan_name = 'Morgan'
 define morgan_score = 0
 
 define radio = DynamicCharacter('radio_name', what_prefix='{i}', what_suffix='{/i}')

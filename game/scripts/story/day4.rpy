@@ -5,22 +5,26 @@ label day4_morning:
 
 label day4_combat:
     ## FADE IN to CABIN EXTERIOR
-
+    scene fnc_cabinfp_day1 with fade
+    
     guide '“Again, Gavin. You swing too close to yourself. You’ll need more leverage and a broader reach if you hope to maximize the damage you can cause.”'
 
     ## FADE IN Gavin sprite
-
+    show gavin at grouped_left_pos1
+    
     gavin '“Yes, Guide.”'
 
     guide '“Morgan, concentrate on your surroundings. Your duty is to care for your well being, and the well being of your friends. What’s immediately in front of you may not always be the most important thing.”'
 
     ## FADE IN Morgan sprite
-
+    show morgan at grouped_left_pos3
+    
     morgan '“Okay.”'
 
     guide '“Lance... for the love of the gods, {i}please{/i} relax your shoulders.”'
 
     ## FADE IN Lance sprite
+    show lance at grouped_left_pos2
 
     lance '“I’m {i}trying{/i}.”'
 
@@ -48,18 +52,27 @@ label day4_combat:
     guide_dark 'You only get what’s {i}earned{/i}. And when nothing changes...'
 
     ## There’s a ROAR of a corrupted monster somewhere closeby.
+    play sound monster_roar
 
     guide_dark 'You don’t {i}earn{/i} any change.'
 
     ## The HEROES draw their weapons.
+    play sound sword_draw
 
     morgan '“They followed us here..?”'
 
     gavin '“I guess it had to happen sooner or later. We’ve got this!”'
 
     ## BEGIN COMBAT
+    # call combat_corrupted_strong
 
     ## AFTER COMBAT
+    scene fnc_cabinfp_day1 with fade
+
+    show gavin at grouped_left_pos1
+    show lance at grouped_left_pos2
+    show morgan at grouped_left_pos3
+    with None
 
     guide_dark '“Good. That won’t be the last of them though.”'
 
@@ -85,6 +98,9 @@ label day4_combat:
     guide_dark '“Your training is nearing its culmination. We can’t get distracted now.”'
 
     ## The HEROES all look at each other.
+    show gavin uncomfortable
+    show lance uncomfortable
+    show morgan uncomfortable
 
     lance '“... Okay... if you say so.”'
 
@@ -118,88 +134,90 @@ label day4_combat:
 
     ## Play GASP sound effect to indicate return of control to the GUIDE
 
-    ## CHOICE:
+    menu day4_combat_choice:
+        "Tell them everything.":
+            jump day4_combat_choice_tell_lie
+        "Lie.":
+            jump day4_combat_choice_tell_lie
+        "Say nothing.":
+            jump day4_combat_choice_say_nothing
 
-    ## >Tell them everything.
-    ## >Lie.
-    ## >Say nothing.
 
-    ## (“Tell them everything” and “Lie” trees both lead to same tree. Choices merge at > RECONVENE)
+    label day4_combat_choice_tell_lie:
+        guide '“...”'
 
-    ## >Tell them everything.
-    ## >Lie
+        guide 'You asshole. You {i}know{/i} I’m bound to neither lie nor give the whole truth.'
+        guide 'You’ve left me with an {i}impossible{/i} choice.'
+        guide 'Though I suppose my choices have not mattered at large recently regardless.'
+        guide 'No matter what I do, it’s not enough for you. You’re too impatient. There’s no way to win.'
+        guide 'There never {i}has{/i} been.'
+        guide 'And this time will be no different.'
+        jump day4_combat_choice_say_nothing
 
-    guide '“...”'
+    label day4_combat_choice_say_nothing:
+        guide 'We both know there’s no point in me trying to say anything. You won’t allow it.'
+        guide 'Was this all just to mock me? To mock me and my efforts, even though there’s {i}nothing{/i} I could have done to make this go any differently?'
+        guide 'You hold the cards. You have since the start. I’m just another one of your puppets unable to cut loose from its strings.'
+        guide 'Despite my best efforts... nothing ever changes.'
+        jump day4_combat_choice_reconvene
 
-    guide 'You asshole. You {i}know{/i} I’m bound to neither lie nor give the whole truth.'
-    guide 'You’ve left me with an {i}impossible{/i} choice.'
-    guide 'Though I suppose my choices have not mattered at large recently regardless.'
-    guide 'No matter what I do, it’s not enough for you. You’re too impatient. There’s no way to win.'
-    guide 'There never {i}has{/i} been.'
-    guide 'And this time will be no different.'
+    label day4_combat_choice_reconvene:
+        lance '“... Come on. {i}Say{/i} something.”'
 
-    ## >Say nothing.
+        guide '“... I... can’t.”'
+        guide '“It wouldn’t change anything even if I could.”'
 
-    guide 'We both know there’s no point in me trying to say anything. You won’t allow it.'
-    guide 'Was this all just to mock me? To mock me and my efforts, even though there’s {i}nothing{/i} I could have done to make this go any differently?'
-    guide 'You hold the cards. You have since the start. I’m just another one of your puppets unable to cut loose from its strings.'
-    guide 'Despite my best efforts... nothing ever changes.'
+        lance '“Even if you could..?”'
 
-    ## > RECONVENE
+        gavin '“Come on! You think we believe that?”'
 
-    lance '“... Come on. {i}Say{/i} something.”'
+        lance '“I do.”'
 
-    guide '“... I... can’t.”'
-    guide '“It wouldn’t change anything even if I could.”'
+        gavin '“Lance?”'
 
-    lance '“Even if you could..?”'
+        lance '“We’re Chosen, remember? Prophesied heroes.”'
+        lance '“And the Guide? It’s as the Roots said.”'
+        lance '“He was Chosen once, too.”'
+        lance '“Whatever it is he’s not telling us, it’s probably for good reason.”'
+        lance '“Though, if possible, I {i}do{/i} want to know one thing.”'
+        lance '“Are we going to live?”'
 
-    gavin '“Come on! You think we believe that?”'
+        guide 'Of all the questions I could answer...'
 
-    lance '“I do.”'
+        guide_dark '“It’s very likely.”'
+        guide_dark '“You have fought hard and trained harder.”'
+        guide_dark '“You are becoming the best versions of yourselves.”'
+        guide_dark '“Stronger. Faster. More confident. More {i}powerful{/i}.”'
+        guide_dark '“Such power is enviable.”'
+        guide_dark '“It will be a great catalyst to the future.”'
 
-    gavin '“Lance?”'
+        ## The HEROES relax somewhat.
+        show gavin uncomfortable
+        show lance uncomfortable
+        show morgan uncomfortable
 
-    lance '“We’re Chosen, remember? Prophesied heroes.”'
-    lance '“And the Guide? It’s as the Roots said.”'
-    lance '“He was Chosen once, too.”'
-    lance '“Whatever it is he’s not telling us, it’s probably for good reason.”'
-    lance '“Though, if possible, I {i}do{/i} want to know one thing.”'
-    lance '“Are we going to live?”'
+        gavin '“I still have so many questions. So many doubts.”'
+        gavin '“But I have to trust you. What other choice is there?”'
 
-    guide 'Of all the questions I could answer...'
+        guide 'What other choice, indeed...'
 
-    guide_dark '“It’s very likely.”'
-    guide_dark '“You have fought hard and trained harder.”'
-    guide_dark '“You are becoming the best versions of yourselves.”'
-    guide_dark '“Stronger. Faster. More confident. More {i}powerful{/i}.”'
-    guide_dark '“Such power is enviable.”'
-    guide_dark '“It will be a great catalyst to the future.”'
+        lance '“Fine then. Let those monsters come.”'
+        lance '“The more of them we kill, the more we’ll understand how to sense them from afar.”'
+        lance '“Then, eventually... the Hidden Darkness itself.”'
 
-    ## The HEROES relax somewhat.
+        morgan '“... Maybe we’ll be okay, then.”'
 
-    gavin '“I still have so many questions. So many doubts.”'
-    gavin '“But I have to trust you. What other choice is there?”'
+        guide_dark '“Hold on tight to your hope.”'
+        guide_dark '“Let it make you stronger.”'
+        guide_dark '“Soon, the end will be upon us. And you will be ready.”'
 
-    guide 'What other choice, indeed...'
+        ## FADE TO BLACK
+        scene backdrop_black with dissolve
 
-    lance '“Fine then. Let those monsters come.”'
-    lance '“The more of them we kill, the more we’ll understand how to sense them from afar.”'
-    lance '“Then, eventually... the Hidden Darkness itself.”'
-
-    morgan '“... Maybe we’ll be okay, then.”'
-
-    guide_dark '“Hold on tight to your hope.”'
-    guide_dark '“Let it make you stronger.”'
-    guide_dark '“Soon, the end will be upon us. And you will be ready.”'
-
-    ## FADE TO BLACK
-
-    guide '... Forgive me.'
-
-    ## END SCENE
-
-    return
+        guide '... Forgive me.'
+        
+        ## END SCENE
+        return
 
 label day4_confrontation:
     # THIS HAS CHANGED FROM THE OUTLINE/FLOW CHART.

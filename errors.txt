@@ -2,9 +2,21 @@
 errors listed below, and try again.
 
 
-File "game/scripts/story/day3.rpy", line 582: expected 'image_name_component' not found.
-    hide (gavin, lucas) with easeoutleft
-         ^
+File "game/scripts/combat/combat.rpy", line 163: expected statement.
+    combat_active = False
+                  ^
+
+File "game/scripts/combat/combat.rpy", line 164: expected statement.
+    message_bar_text = "You Win"
+                     ^
+
+File "game/scripts/combat/combat.rpy", line 167: expected statement.
+    combat_active = False
+                  ^
+
+File "game/scripts/combat/combat.rpy", line 168: expected statement.
+    message_bar_text = "You Lose"
+                     ^
 
 Ren'Py Version: Ren'Py 8.2.1.24030407
-Mon Apr 22 22:13:11 2024
+Thu Apr 25 23:16:40 2024

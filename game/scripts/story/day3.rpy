@@ -130,6 +130,7 @@ label day3_combat:
 
     ## There’s a ROAR, BEGIN COMBAT
     play sound monster_roar
+    "COMBAT COMBAT_CORRUPTED_WEAK"
     # call combat_corrupted_weak
 
     ## AFTER COMBAT, the HEROES look shaken, except for LANCE.
@@ -351,6 +352,7 @@ label day3_dinner:
         show overlay_pain with screen_shake_light
         hide overlay_pain
         guide_dark '{i}Thus, always.{/i}'
+        stop music
 
     label day3_dinner_end:
         # FADE OUT
@@ -590,10 +592,16 @@ label day3_night_combat:
     guide 'I can only pray we aren’t too late.'
 
     ## The sound of a scream in the distance.
-
+    play sound scream_woman
     gavin '“There! Around the corner!”'
 
     ## Fade in GAVIN and LANCE first, then Morgan second.
+    show gavin uncomfortable at grouped_left_pos1
+    show lance uncomfortable at grouped_left_pos2
+    with fade
+
+    show morgan uncomfortable at grouped_right_pos3
+    with fade
 
     gavin '“Morgan!”'
 
@@ -602,7 +610,8 @@ label day3_night_combat:
     guide_dark 'Protect the girl! We need her power!'
 
     ## BEGIN BATTLE with strong variant CORRUPTED
-    ## (Note: this scene could be massively changed pending time with more dialogue and scene-specific art (I think you called them CGs?))
+    # call combat_corrupted_strong
+
     ## AFTER BATTLE, everyone catches their breath.
 
     guide '“Morgan? Are you injured?”'
@@ -622,11 +631,14 @@ label day3_night_combat:
     lance '“I’m not saying these things just to be mean! I know what I’m talking about!”'
 
     ## LANCE becomes teary and emotional.
+    show lance angry
 
     lance '“Nothing left in the Corrupted knows anything about compassion or love!”'
     lance '“I saw what they did to my family! I {i}know{/i} what I’m talking about! Okay?!”'
 
     ## SURPRISED emotions on Gavin and Morgan
+    show gavin surprised
+    show morgan surprised
 
     lance '“They hated me before there wasn’t anything left of them!”'
 
@@ -638,13 +650,16 @@ label day3_night_combat:
     lance '“I didn’t want to be the odd one out. I’m {i}tired{/i} of being the odd one out.”'
     lance '“I didn’t know anyone outside of my family until I knew you guys. It was just me, Mom, Dad... my little brother...”'
 
-    lance 'is too overcome with emotion to keep talking.'
+    # LANCE is too overcome with emotion to keep talking.
+    show lance sad
 
     lance '“I miss them. Why did it have to be them?”'
     lance '“I’m so sick of watching them {i}change{/i} when I close my eyes at night.”'
     lance '“I just want them back. I don’t want {i}this{/i}.”'
 
     ## GAVIN and MORGAN struggle to think of what to say.
+    show gavin uncomfortable
+    show morgan uncomfortable
 
     gavin '“We can be your family, Lance. If you’ll let us.”'
     gavin '“You know that, right?”'
@@ -652,7 +667,7 @@ label day3_night_combat:
 
     morgan '“... We’d feel less weird about you if you were more honest with us.”'
 
-    lance 'calms down a little.'
+    ## LANCE calms down a little.
 
     guide_dark 'How {i}touching{/i}.'
     guide_dark 'What a strong little boy.'
