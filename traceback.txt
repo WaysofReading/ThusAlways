@@ -1,74 +1,53 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 5, in script call
-    call combat
-  File "game/scripts/combat/combat.rpy", line 34, in script
-    pause 0.25
-  File "renpy/common/000statements.rpy", line 460, in execute_pause
-    renpy.pause(delay)
-  File "game/scripts/combat/combat.rpy", line 67, in execute
-    screen turn_order_pane():
-  File "game/scripts/combat/combat.rpy", line 67, in execute
-    screen turn_order_pane():
-  File "game/scripts/combat/combat.rpy", line 68, in execute
-    frame:
-  File "game/scripts/combat/combat.rpy", line 73, in execute
-    $ active_idx = turn_order.index(active_entity)
-  File "game/scripts/combat/combat.rpy", line 73, in <module>
-    $ active_idx = turn_order.index(active_entity)
-ValueError: <store.Entity object at 0x0000000008879ca0> is not in list
+  File "game/script.rpy", line 24, in script call
+    call day4_dream from _call_day4_dream
+  File "game/scripts/story/day4.rpy", line 319, in script
+    guide "Such a bastard for making it so {i}obvious{/i} from the start, like this is all some joke to you."
+OSError: Couldn't find file 'bgm_dangerous_path.ogg'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 5, in script call
-    call combat
-  File "game/scripts/combat/combat.rpy", line 34, in script
-    pause 0.25
-  File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\ast.py", line 1968, in execute
-    self.call("execute")
-  File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\ast.py", line 1950, in call
-    return renpy.statements.call(method, parsed, *args, **kwargs)
-  File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\statements.py", line 349, in call
-    return method(parsed, *args, **kwargs)
-  File "renpy/common/000statements.rpy", line 460, in execute_pause
-    renpy.pause(delay)
-  File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\exports.py", line 1661, in pause
-    rv = renpy.ui.interact(mouse='pause', type='pause', roll_forward=roll_forward, pause=delay, pause_modal=modal)
+  File "game/script.rpy", line 24, in script call
+    call day4_dream from _call_day4_dream
+  File "game/scripts/story/day4.rpy", line 319, in script
+    guide "Such a bastard for making it so {i}obvious{/i} from the start, like this is all some joke to you."
+  File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\ast.py", line 2557, in execute
+    Say.execute(self)
+  File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\ast.py", line 615, in execute
+    renpy.exports.say(who, what, *args, **kwargs)
+  File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\exports.py", line 1493, in say
+    who(what, *args, **kwargs)
+  File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\character.py", line 1394, in __call__
+    self.do_display(who, what, cb_args=self.cb_args, dtt=dtt, **display_args)
+  File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\character.py", line 1045, in do_display
+    display_say(who,
+  File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\character.py", line 741, in display_say
+    rv = renpy.ui.interact(mouse='say', type=type, roll_forward=roll_forward)
   File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\ui.py", line 301, in interact
     rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
   File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\display\core.py", line 2165, in interact
     repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
-  File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\display\core.py", line 2687, in interact_core
-    root_widget.visit_all(lambda d : d.per_interact())
-  File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\display\displayable.py", line 431, in visit_all
-    d.visit_all(callback, seen)
-  File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\display\displayable.py", line 431, in visit_all
-    d.visit_all(callback, seen)
-  File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\display\displayable.py", line 431, in visit_all
-    d.visit_all(callback, seen)
-  File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\display\screen.py", line 480, in visit_all
-    callback(self)
-  File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\display\core.py", line 2687, in <lambda>
-    root_widget.visit_all(lambda d : d.per_interact())
-  File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\display\screen.py", line 491, in per_interact
-    self.update()
-  File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\display\screen.py", line 697, in update
-    self.screen.function(**self.scope)
-  File "game/scripts/combat/combat.rpy", line 67, in execute
-    screen turn_order_pane():
-  File "game/scripts/combat/combat.rpy", line 67, in execute
-    screen turn_order_pane():
-  File "game/scripts/combat/combat.rpy", line 68, in execute
-    frame:
-  File "game/scripts/combat/combat.rpy", line 73, in execute
-    $ active_idx = turn_order.index(active_entity)
-  File "game/scripts/combat/combat.rpy", line 73, in <module>
-    $ active_idx = turn_order.index(active_entity)
-ValueError: <store.Entity object at 0x0000000008879ca0> is not in list
+  File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\display\core.py", line 3022, in interact_core
+    renpy.audio.audio.periodic()
+  File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\audio\audio.py", line 1205, in periodic
+    raise_(exc[0], exc[1], exc[2])
+  File "lib/python3.9/future/utils/__init__.py", line 444, in raise_
+  File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\audio\audio.py", line 1183, in periodic_thread_main
+    periodic_pass()
+  File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\audio\audio.py", line 1125, in periodic_pass
+    c.periodic()
+  File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\audio\audio.py", line 534, in periodic
+    topf = load(filename)
+  File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\audio\audio.py", line 72, in load
+    rv = renpy.loader.load(fn, directory="audio")
+  File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\loader.py", line 672, in load
+    raise IOError("Couldn't find file '%s'." % name)
+OSError: Couldn't find file 'bgm_dangerous_path.ogg'.
 
 Windows-10-10.0.19045 AMD64
 Ren'Py 8.2.1.24030407
-Untitled VN 1.0
-Thu Apr 25 23:18:09 2024
+Thus, Always 1.0
+Thu May  2 01:26:47 2024
