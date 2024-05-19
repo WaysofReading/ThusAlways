@@ -1,53 +1,42 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 24, in script call
-    call day4_dream from _call_day4_dream
-  File "game/scripts/story/day4.rpy", line 319, in script
-    guide "Such a bastard for making it so {i}obvious{/i} from the start, like this is all some joke to you."
-OSError: Couldn't find file 'bgm_dangerous_path.ogg'.
+  File "game/script.rpy", line 19, in script call
+    call day4_combat from _call_day4_combat
+  File "game/scripts/story/day4.rpy", line 68, in script call
+    call combat_encounter_corrupted_strong_day4_combat
+  File "game/scripts/combat/combat.rpy", line 136, in script call
+    call apply_skill
+  File "game/scripts/combat/combat.rpy", line 364, in script
+    $ apply_skill(active_entity, selected_skill, selected_target)
+  File "game/scripts/combat/combat.rpy", line 364, in <module>
+    $ apply_skill(active_entity, selected_skill, selected_target)
+  File "game/scripts/combat/combat_defs.rpy", line 227, in apply_skill
+    for eff in t.effects:
+AttributeError: 'NoneType' object has no attribute 'effects'
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 24, in script call
-    call day4_dream from _call_day4_dream
-  File "game/scripts/story/day4.rpy", line 319, in script
-    guide "Such a bastard for making it so {i}obvious{/i} from the start, like this is all some joke to you."
-  File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\ast.py", line 2557, in execute
-    Say.execute(self)
-  File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\ast.py", line 615, in execute
-    renpy.exports.say(who, what, *args, **kwargs)
-  File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\exports.py", line 1493, in say
-    who(what, *args, **kwargs)
-  File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\character.py", line 1394, in __call__
-    self.do_display(who, what, cb_args=self.cb_args, dtt=dtt, **display_args)
-  File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\character.py", line 1045, in do_display
-    display_say(who,
-  File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\character.py", line 741, in display_say
-    rv = renpy.ui.interact(mouse='say', type=type, roll_forward=roll_forward)
-  File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\ui.py", line 301, in interact
-    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
-  File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\display\core.py", line 2165, in interact
-    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
-  File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\display\core.py", line 3022, in interact_core
-    renpy.audio.audio.periodic()
-  File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\audio\audio.py", line 1205, in periodic
-    raise_(exc[0], exc[1], exc[2])
-  File "lib/python3.9/future/utils/__init__.py", line 444, in raise_
-  File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\audio\audio.py", line 1183, in periodic_thread_main
-    periodic_pass()
-  File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\audio\audio.py", line 1125, in periodic_pass
-    c.periodic()
-  File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\audio\audio.py", line 534, in periodic
-    topf = load(filename)
-  File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\audio\audio.py", line 72, in load
-    rv = renpy.loader.load(fn, directory="audio")
-  File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\loader.py", line 672, in load
-    raise IOError("Couldn't find file '%s'." % name)
-OSError: Couldn't find file 'bgm_dangerous_path.ogg'.
+  File "game/script.rpy", line 19, in script call
+    call day4_combat from _call_day4_combat
+  File "game/scripts/story/day4.rpy", line 68, in script call
+    call combat_encounter_corrupted_strong_day4_combat
+  File "game/scripts/combat/combat.rpy", line 136, in script call
+    call apply_skill
+  File "game/scripts/combat/combat.rpy", line 364, in script
+    $ apply_skill(active_entity, selected_skill, selected_target)
+  File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\ast.py", line 823, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "D:\Google Drive\programming\PyProjects\the-thoughtful-jam\renpy-8.2.1-sdk\renpy\python.py", line 1178, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+  File "game/scripts/combat/combat.rpy", line 364, in <module>
+    $ apply_skill(active_entity, selected_skill, selected_target)
+  File "game/scripts/combat/combat_defs.rpy", line 227, in apply_skill
+    for eff in t.effects:
+AttributeError: 'NoneType' object has no attribute 'effects'
 
 Windows-10-10.0.19045 AMD64
 Ren'Py 8.2.1.24030407
 Thus, Always 1.0
-Thu May  2 01:26:47 2024
+Sun May  5 01:47:35 2024

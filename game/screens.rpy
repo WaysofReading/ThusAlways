@@ -139,10 +139,10 @@ style window:
     background Image("gui/textbox.png", xalign=0.5, yalign=1.0)
 
 style namebox:
-    xpos gui.name_xpos - 250
+    xpos gui.name_xpos - 150
     xanchor gui.name_xalign
     xsize gui.namebox_width - 30
-    ypos gui.name_ypos  + 15
+    ypos gui.name_ypos + 10
     ysize gui.namebox_height
 
     background Frame("gui/namebox.png", gui.namebox_borders, tile=gui.namebox_tile, xalign=gui.name_xalign)
@@ -1473,14 +1473,14 @@ init:
         style.bar_hp = Style(style.default)
         style.bar_hp.left_bar = Frame("images/combat/gui/bar_hp_right.png", 20, 20)
         style.bar_hp.right_bar = Frame("images/combat/gui/bar_hp_left.png", 20, 20)
-        style.bar_hp.xmaximum = 192
-        style.bar_hp.ymaximum = 32
+        style.bar_hp.xmaximum = 384
+        style.bar_hp.ymaximum = 12
 
         style.bar_mp = Style(style.default)
         style.bar_mp.left_bar = Frame("images/combat/gui/bar_mp_right.png", 20, 20)
         style.bar_mp.right_bar = Frame("images/combat/gui/bar_mp_left.png", 20, 20)
-        style.bar_mp.xmaximum = 192
-        style.bar_mp.ymaximum = 32
+        style.bar_mp.xmaximum = 384
+        style.bar_mp.ymaximum = 12
 
         # https://www.renpy.org/wiki/renpy/doc/cookbook/Shake_effect
         class Shaker(object):
@@ -1532,9 +1532,9 @@ init:
 
 ## Custom screen effects
 
-define screen_shake_light = Shake((0.5, 1.0, 0.5, 1.0), 1.0, dist=5)
-define screen_shake_mid = Shake((0.5, 1.0, 0.5, 1.0), 1.0, dist=10)
-define screen_shake_strong = Shake((0.5, 1.0, 0.5, 1.0), 1.0, dist=20)
+define screen_shake_light = Shake((0.5, 1.0, 0.5, 1.0), 1.5, dist=5)
+define screen_shake_mid = Shake((0.5, 1.0, 0.5, 1.0), 1.5, dist=10)
+define screen_shake_strong = Shake((0.5, 1.0, 0.5, 1.0), 1.5, dist=20)
 
 # https://lemmasoft.renai.us/forums/viewtopic.php?p=486793#p486793
 transform sprite_shake_light(rate=0.03):
@@ -1545,7 +1545,193 @@ transform sprite_shake_light(rate=0.03):
     linear rate xoffset +0 yoffset +0
     repeat 2
 
-transform sprite_bounce_light(rate=0.1):
-    linear rate xoffset 0 yoffset -6
-    linear rate xoffset +0 yoffset +0
+transform sprite_bounce_light:
+    linear 0.1 xoffset 0 yoffset -6
+    linear 0.1 xoffset +0 yoffset +0
     repeat 2
+
+# https://www.reddit.com/r/RenPy/comments/16i3kid/comment/k0hhyd4/
+transform credits_scroll(speed):
+    xcenter 0.5 yanchor 0.0 ypos 1.0
+    ypos 600
+    linear speed ypos -66000
+
+screen the_end():
+    fixed:
+        xalign 0.5
+        yalign 0.5
+        text "The End":
+            xalign 0.5
+            yalign 0.5
+            size 144
+        text "Thank you for playing!":
+            xalign 0.5
+            yalign 0.8
+            size 72
+
+screen credits():
+    ## Ensure that the game_menu screens can't be stopped
+    key "K_ESCAPE" action NullAction()
+    key "K_MENU" action NullAction()
+    key "mouseup_3" action NullAction()
+
+    style_prefix "credits"
+
+    timer 95.0 action Return()
+    ## Adjust this number to control when the Credits screen is hidden and the game
+    ## returns to its normal flow.
+
+    frame at credits_scroll(512.0): #bigger is slower
+        ## Adjust this number to control the speed at which the credits scroll.
+        background None
+        xalign 0.5
+
+        vbox:
+            null height 1080
+            label "Credits" xalign 0.5
+            null height 300
+
+            label "Created and Directed by" xalign 0.5
+            null height 75
+            text "Sydney Schouten and Justin Parnell"
+            null height 150
+
+            label "Screenplay by" xalign 0.5
+            null height 75
+            text "Sydney Schouten"
+            null height 150
+
+            label "Art by" xalign 0.5
+            null height 75
+            text "Sydney Schouten"
+            null height 150
+
+            label "Programming by" xalign 0.5
+            null height 75
+            text "Justin Parnell"
+            null height 150
+
+            label "Editor" xalign 0.5
+            null height 75
+            text "Justin Parnell"
+            null height 150
+
+            text "Developed in Ren'Py for the Thoughtful Game Jam\nApril 12, 2024 - May 5, 2024\nwww.itch.io/jam/the-thoughtful-jam" xalign 0.5
+            null height 1080
+
+            label "Art" xalign 0.5
+            null height 75
+            text "-- images/backdrops/backdrop_mist.jpg: based on Misty Mountains by Bradley Weber -- Misty Mountains -- https://flickr.com/photos/41294655@N00/30781941791/in/photolist-NU6uSk-AnDFwL-2ozYimH-WwBw4F-Ru2DCu-2ck6dJM-R7J8dT-GG89Aw-JfcttQ-zF7gtr-2kG3USj-M2cEVJ-NjejVW-yCgUFd-Qq6yNR-Py1JNu-8ws63g-2n89YXF-5wvncM-2i312dc-pQcvhb-p9YFf9-RQu7zQ-BhEjJm-21QxZZo-L7VDDN-2o8kjgv-N6nYKt-LYGozB-2msQpEg-2o73rjq-2gvDmWj-2ohQroB-ZvvPf8-2ofv3tW-BimQoM-M2cBj5-a3tEuM-2kv9VQB-N39Zqh-2dw3rZ6-8TYKJt-2oazBzH-q4b5jr-ETXKNr-2nfGreF-2gf8s18-bxuypa-2mJ1jrv-GZcBsN/ -- License: Creative Commons" style "credits_text_small"
+            text "-- images/scenes/cabin_interior: based on https://pixabay.com/photos/western-country-style-fireplace-143213/, https://pixabay.com/photos/iceland-moss-nature-landscape-3866699/" style "credits_text_small"
+            text "-- images/scenes/cabin_exterior: based on https://pixabay.com/photos/sunset-field-cabin-colour-blue-1585177/" style "credits_text_small"
+            text "-- images/scenes/ruined_building_interior: based on https://pixabay.com/photos/windows-hall-abandoned-building-5678769/" style "credits_text_small"
+            text "-- images/scenes/lab_*: based on https://sketchfab.com/3d-models/location-underground-laboratory-7f70eebd1f044277b91c197fb17c513e#download, https://sketchfab.com/3d-models/sci-fi-portal-gateway-58d2570e88c642bba8ef92f3175391cf, https://sketchfab.com/3d-models/science-lab-lowpoly-e0d65331317b424ca82d317c27652f7f#download" style "credits_text_small"
+            text "-- images/scenes/wasteland_night: based on https://pixabay.com/photos/desert-rock-formations-erosion-1730077/ " style "credits_text_small"
+            text "-- images/scenes/kitchen_*: based on https://sketchfab.com/3d-models/old-kitchen-the-grandmas-kitchen-9cf1f9177c554799bc09bbc8a77efe76#download " style "credits_text_small"
+            text "-- images/scenes/burning_city: based on https://www.pickpik.com/city-disaster-end-of-the-world-apocalypse-fire-lightning-43506" style "credits_text_small"
+            text "-- images/scenes/hidden_darkness: based on https://pixabay.com/photos/city-buildings-alley-street-urban-7091688/" style "credits_text_small"
+            text "-- images/scenes/cabin_window, door_window: based on https://pixabay.com/illustrations/architecture-window-old-curtain-2391977/, https://sketchfab.com/3d-models/wooden-door-0643dee368fe4ed983910cf182ff64b8, https://sketchfab.com/3d-models/hand-painted-log-cabin-wall-6303c2fdfbb0405a93dfe63479f77046" style "credits_text_small"
+            null height 150
+            label "Engine" xalign 0.5
+            null height 75
+            text "-- Battle engine: consulted RPG Battle Engine for Ren'Py by Habitacle -- https://github.com/Habitacle/battle-engine/tree/master -- License: MIT license" style "credits_text_small"
+            null height 150
+            label "Music" xalign 0.5
+            null height 75
+            text "-- audio/bgm/bgm_cry_of_the_soul: Cry of The Soul by NickyPe -- pixabay 139968" style "credits_text_small"
+            text "-- audio/bgm/bgm_dangerous_path: Dangerous Path.ogg by jhaeka -- https://joshuuu.itch.io/short-loopable-background-music -- License: Free for personal or commercial use as long as you don't redistribute as your own" style "credits_text_small"
+            text "-- audio/bgm/bgm_dark_ambient: Dark Ambient by stereocode -- pixabay" style "credits_text_small"
+            text "-- audio/bgm/bgm_delicate: Delicate by PineAppleMusic -- pixabay " style "credits_text_small"
+            text "-- audio/bgm/bgm_drone: Drone_BowedCybmal.wav by ceich93 -- https://freesound.org/s/266414/ -- License: Creative Commons 0" style "credits_text_small"
+            text "-- audio/bgm/bgm_drone_throb: Drone Deep 5 at epidemic sound -- https://www.epidemicsound.com/track/KgEUAOTyUJ/ -- License: see website" style "credits_text_small"
+            text "-- audio/bgm/bgm_find_the_master: Find The Master by Hnedsstudio -- pixabay" style "credits_text_small"
+            text "-- audio/bgm/bgm_frozen_landscape: Frozen Landscape by MeszarcsekGergely -- pixabay 140219" style "credits_text_small"
+            text "-- audio/bgm/bgm_ghost_walk: Ghost Walk by NickyPe -- pixabay 127743" style "credits_text_small"
+            text "-- audio/bgm/bgm_i_am_not_alone: I Am Not Alone by Monument_Music -- pixabay 194621" style "credits_text_small"
+            text "-- audio/bgm/bgm_meditative_hang: Meditative Hang by JefWakeUp -- pixabay 201970" style "credits_text_small"
+            text "-- audio/bgm/bgm_mellow_immersive_and_unstable: Mellow Immersive and Unstable by SamuelFrancisJohnson -- pixabay 152266" style "credits_text_small"
+            text "-- audio/bgm/bgm_movie_score_a: Movie Score A by DHy-Nez -- pixabay 180229" style "credits_text_small"
+            text "-- audio/bgm/bgm_muloto: BGM 2 Muloto Premik by AdhyanDhara -- pixabay 164222" style "credits_text_small"
+            text "-- audio/bgm/bgm_rise_of_the_immortal_warlord: Rise of the Immortal Warlord by CharlVera -- pixabay 203537" style "credits_text_small"
+            text "-- audio/bgm/bgm_solemn: SOLEMNITY: A Free Emotional Music Loop by Fablefly Music -- https://fablefly-music.itch.io/solemnity -- License: Creative Commons Attribution v4.0 International" style "credits_text_small"
+            text "-- audio/bgm/bgm_soulful_crescendo: Soulful Crescendo by PineAppleMusic -- pixabay 205601" style "credits_text_small"
+            text "-- audio/bgm/bgm_standing_stones: The Standing Stones by geoffharvey" style "credits_text_small"
+            text "-- audio/bgm/bgm_tense_dark: tense-dark-background_199278 by UNIVERSEFIELD -- pixabay 199278" style "credits_text_small"
+            text "-- audio/bgm/bgm_the_satyr_dance: thesaytrsdance by samuelfrancisjohnson" style "credits_text_small"
+            text "-- audio/bgm/bgm_the_two_siblings: The two siblings by samuelfrancisjohnson" style "credits_text_small"
+            text "-- audio/bgm/bgm_transient: Transient by GuilhermeBernardes -- pixabay 204416" style "credits_text_small"
+            text "-- audio/bgm/foley_crowd-panic: Crowd Panic Mob Distant at epidemic sound -- https://www.epidemicsound.com/track/12udqWAqPd" style "credits_text_small"
+            text "-- audio/bgm/foley_desert_wind: desert_wind.wav by DarkShroom -- https://freesound.org/s/645305/ -- License: Creative Commons 0" style "credits_text_small"
+            text "-- audio/bgm/foley_electric_hum: electric-hum-141075 by SoundsForYou -- pixabay 141075" style "credits_text_small"
+            text "-- audio/bgm/foley_fireplace: fireplace-with-crackling-sounds-2-min-rk-178392 by RonKoster2023 -- pixabay 178392" style "credits_text_small"
+            text "-- audio/bgm/foley_lab_ambiance: drone-12-123063 by Bret Bernhoft -- pixabay 123063" style "credits_text_small"
+            text "-- audio/bgm/foley_portal: portal-idle-344022 -- pixabay 34022" style "credits_text_small"
+            text "-- audio/bgm/foley_radio_chatter: Radio Chatter Soundscape by Speedenza -- https://freesound.org/s/208436/ -- License: Attribution NonCommercial 4.0" style "credits_text_small"
+            text "-- audio/bgm/foley_war_sounds: Battle Modern War 1 at epidemic sound -- https://www.epidemicsound.com/track/vMHSaong1M/ -- License: see website" style "credits_text_small"
+            text "-- audio/bgm/foley_washing_dishes: doing-the-dishes-56554 and washing-dishes-56153 -- pixabay" style "credits_text_small"
+            null height 150
+            label "SFX" xalign 0.5
+            null height 75
+            text "-- audio/sound/car_horn: Car Alarm Horn, Walking Past, A.wav by InspectorJ -- https://freesound.org/s/402958/ -- License: Attribution 4.0" style "credits_text_small"
+            text "-- audio/sound/distant_sirens: civil-defense-siren-128262 by SoundReality -- pixabay 128262" style "credits_text_small"
+            text "-- audio/sound/door_opening: dorm door opening.wav by pagancow -- https://freesound.org/s/15419/ -- License: Creative Commons 0" style "credits_text_small"
+            text "-- audio/sound/evil_laughter: laughter-01-105588 -- pixabay 105588" style "credits_text_small"
+            text "-- audio/sound/explosion_nearby: Explosion Auto 1 at epidemic sound -- https://www.epidemicsound.com/track/qiSEHGDkbC/ -- License: see website" style "credits_text_small"
+            text "-- audio/sound/fence_hit: Chain Link Fence - Impacts.wav by MWsfx -- https://freesound.org/s/575388/ -- License: Creative Commons 0" style "credits_text_small"
+            text "-- audio/sound/foley_pulsing: heart-beat3689 -- pixabay 3689" style "credits_text_small"
+            text "-- audio/sound/footsteps: Hiking Boot Footsteps on Gravel by Fission9 -- https://freesound.org/s/521588/ -- License: Creative Commons 0" style "credits_text_small"
+            text "-- audio/sound/footsteps_concrete: concrete-footsteps-6752 -- pixabay 6752" style "credits_text_small"
+            text "-- audio/sound/footsteps_echoing: footsteps-hallway-6417 -- pixabay 6417" style "credits_text_small"
+            text "-- audio/sound/gasp_man: Man Gasping by ranman22 -- https://freesound.org/s/677888/ -- License: Creative Commons 0" style "credits_text_small"
+            text "-- audio/sound/gunfire: Gunshot Battle 1 at epidemic sound -- https://www.epidemicsound.com/track/8Dt8AVitmN/ -- License: see website" style "credits_text_small"
+            text "-- audio/sound/jet_flyby: Jet Pass By 1 at epidemic sound -- https://www.epidemicsound.com/track/If0OY4M5bI/ -- License: see website" style "credits_text_small"
+            text "-- audio/sound/jumpscare: cringe-scare-47561 -- pixabay 47561" style "credits_text_small"
+            text "-- audio/sound/keycard_swipe: electronic-door-opening-102496 -- pixabay 102496" style "credits_text_small"
+            text "-- audio/sound/light_switch: basement-light-switch-199064 by Alex_Jauk -- pixabay 199064" style "credits_text_small"
+            text "-- audio/sound/monster_groan: groaning.mp3 by Philip_Daniels -- https://freesound.org/s/244320/ -- License: Creative Commons 0" style "credits_text_small"
+            text "-- audio/sound/object_falling: Plastic and Metal Bumping in Large Concrete Basement.aif by RutgerMuller -- https://freesound.org/s/104055/ -- License: Creative Commons 0" style "credits_text_small"
+            text "-- audio/sound/rubber_duck: baby-squeak-toy-1-183911 by floraphonic -- pixabay 183911" style "credits_text_small"
+            text "-- audio/sound/running: Running on a concrete floor by AlexMurphy53 -- https://freesound.org/s/328458/ -- License: Attribution NonCommercial 4.0" style "credits_text_small"
+            text "-- audio/sound/science_door: sci_fi_door-6451 -- pixabay 6451" style "credits_text_small"
+            text "-- audio/sound/scream_man: 071989_man-screams-in-pain-61964 -- pixabay 61964" style "credits_text_small"
+            text "-- audio/sound/scream_woman: scremas-of-agony-142447 by SoundReality -- pixabay 142447" style "credits_text_small"
+            text "-- audio/sound/sword_draw: Sword Drawing 1.wav by paulfabb -- https://freesound.org/s/577619/ -- License: Creative Commons 0" style "credits_text_small"
+            text "-- audio/sound/throat_clear: Ahem.wav by soundsforunianimation -- https://freesound.org/s/369905/ -- License: Attribution 4.0" style "credits_text_small"
+            null height 150
+            label "UI" xalign 0.5
+            null height 75
+            text "-- GUI elements: Dark Elegance Ren'Py GUI template by Skolaztika -- https://skolaztika.itch.io/dark-elegance-renpy-gui" style "credits_text_small"
+            null height 1080
+            text "© 2024 Sydney Schouten and Justin Parnell"
+            text "License: Creative Commons Attribution NonCommercial v4.0 International (CC BY-NC 4.0)"
+            text "https://creativecommons.org/licenses/by-nc/4.0/"
+
+
+style credits_hbox:
+    spacing 40
+    ysize 30
+
+style credits_vbox:
+    xalign 0.5
+    text_align 0.5
+
+style credits_label_text:
+    xalign 0.5
+    justify True
+    size 125
+    text_align 0.5
+    color "#ff0000"
+
+style credits_text:
+    xalign 0.5
+    size 60
+    justify True
+    text_align 0.5
+    color "#ffffff"
+
+style credits_text_small:
+    xalign 0.0
+    size 24
+    justify True
+    text_align 0.0
+    color "#ffffff"

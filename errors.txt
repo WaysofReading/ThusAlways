@@ -2,13 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/scripts/story/day4.rpy", line 10: play requires a file
-    play bgm_frozen_landscape
-                             ^
-
-File "game/scripts/story/day4.rpy", line 68: play requires a file
-    play bgm_frozen_landscape
-                             ^
+File "game/scripts/combat/combat_defs.rpy", line 147: expected an indented block
+            tooltip_detail = "Entity details TBI"
+             ^
 
 Ren'Py Version: Ren'Py 8.2.1.24030407
-Thu May  2 01:13:37 2024
+Sun May  5 14:05:06 2024

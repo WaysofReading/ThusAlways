@@ -1,32 +1,33 @@
 label day4_morning:
     'DAY 4 - MORNING'
-    call hero_paths_choice
+    call hero_paths_choice from _call_hero_paths_choice_2
     return
 
 label day4_combat:
     ## NEW SCENE: Day 4 Combat
     ## FADE IN to CABIN EXTERIOR. FADE IN Outside sfx
     scene cabin_exterior with fade
-    play music bgm_frozen_landscape
+    play music foley_desert_wind fadein 1.0
     guide "“Again, Gavin. You swing too close to yourself. You’ll need more leverage and a broader reach to maximize the damage you can cause.”"
 
     ## FADE IN Gavin
     ## SPRITE Gavin A
-    show gavin annoyed at grouped_left_pos1
+    show gavin annoyed at grouped_left_gavin
     with dissolve
     gavin "“Yes, Guide.”"
     guide "“Morgan, concentrate on your surroundings. Your duty is to care for your well-being, and that of your friends. What’s immediately in front of you may not always be the most important thing.”"
     
     ## FADE IN Morgan
     ## SPRITE Morgan N
-    show morgan at grouped_center_pos2
+    show morgan at grouped_center_lance
     with dissolve
     morgan "“Okay.”"
     guide "“Lance... for the love of the gods, {i}please{/i} relax your shoulders.”"
     
     ## FADE IN Lance sprite
     ## SPRITE Lance N
-    show lance at grouped_right_pos3
+    show lance at grouped_right_morgan
+    with dissolve
     lance "“I’m {i}trying{/i}.”"
     guide_dark "“Try --”"
     guide "“-- Try exhaling when you cast, instead of inhaling.”"
@@ -36,19 +37,23 @@ label day4_combat:
     guide_dark "What next? You’ll take them on a journey to find ice cream?"
     guide_dark "They’ll have to leave the nest sooner rather than later."
     guide_dark "Don’t tell me you’ve gone {i}soft{/i}."
-    guide "..."
+    guide "{cps=30}...{/cps}"
     guide_dark "Oh, you can’t be serious."
     guide "This isn’t right. Or fair."
     guide_dark "Right? Fair? When has that ever stopped any of this?"
     guide_dark "The cycle doesn’t {i}care{/i} about your precious right or fair."
     guide_dark "You only get what you’ve {i}earned{/i}. And if nothing changes..."
-
+    
     ## SPRITES Gavin UNC, Morgan SP, Lance ANG
     ## There’s a ROAR of a corrupted monster somewhere closeby.
+    play sound monster_roar
+    pause 1.5
     show gavin uncomfortable
     show morgan surprised
     show lance angry
+    pause 0.5
     guide_dark "... That means you didn’t {i}earn{/i} any change."
+    play music bgm_find_the_master fadein 1.0
 
     ## The HEROES draw their weapons.
     ## SPRITE Morgan SP
@@ -60,16 +65,17 @@ label day4_combat:
     gavin "“I guess it had to happen sooner or later. We’ve got this!”"
 
     ## BEGIN COMBAT
-    "call combat_encounter_corrupted_strong"
+    call combat_encounter_corrupted_strong_day4_combat from _call_combat_encounter_corrupted_strong_day4_combat
     
     ## AFTER COMBAT
     ## SPRITES Gavin A, Morgan A, Lance N
     scene cabin_exterior with fade
-    play music bgm_frozen_landscape
-    show gavin annoyed at grouped_center_pos1
-    show lance annoyed at grouped_center_pos2
-    show morgan annoyed at grouped_center_pos3
+    play music foley_desert_wind fadein 1.0
+    show gavin annoyed at grouped_center_gavin
+    show lance annoyed at grouped_center_lance
+    show morgan annoyed at grouped_center_morgan
     with dissolve
+    call restore_from_combat from _call_restore_from_combat_5
     guide_dark "“Good. That won’t be the last of them though.”"
     guide "You! Stop talking, you’re going to --"
     guide_dark "Relax, I’ll remember to breathe this time."
@@ -94,9 +100,10 @@ label day4_combat:
     show morgan neutral
     show lance neutral
     lance "“... Okay... if you say so.”"
+    pause 1.0
 
     ## SPRITE Gavin A
-    show gavin annoyed
+    show gavin annoyed with dissolve
     gavin "“No.”"
     lance "“No?”"
     gavin "“Something isn’t adding up.”"
@@ -115,6 +122,8 @@ label day4_combat:
     gavin "“And I feel like we’re going to be in trouble if you don’t tell us what it is.”"
     gavin "“So please, be honest with us.”"
     gavin "“What is {i}happening?{/i}”"
+    pause 0.75
+
     guide_dark "Whoops."
     guide "You {i}impatient fool!{/i}"
     guide_dark "No, no, we can make this work."
@@ -123,7 +132,7 @@ label day4_combat:
     guide_dark "Mmm, no, you handle this. Goodbye."
     
     ## Play GASP sound effect to indicate return of control to the GUIDE
-    play sound gasp_man
+    play sound gasp_man volume 0.33
 
     ## CHOICE:
     ## >Tell them everything.
@@ -140,8 +149,8 @@ label day4_combat:
     ## >Tell them everything.
     ## >Lie
     label day4_combat_choice_both:
-        guide "“...”"
-        guide_dark "..."
+        guide "“{cps=30}...{/cps}”"
+        guide_dark "{cps=30}...{/cps}"
         guide "You asshole. You {i}know{/i} I can’t lie, nor can I give them the whole truth."
         guide "You’ve left me with an {i}impossible{/i} choice."
         guide "Though I suppose my choices haven’t mattered much, thus far."
@@ -170,9 +179,10 @@ label day4_combat:
         ## SPRITE Gavin ANG
         show gavin angry
         gavin "“Come on! You think we believe that?”"
+        pause 0.75
 
         ## SPRITE Lance N
-        show lance neutral
+        show lance neutral with dissolve
         lance "“I do.”"
 
         ## SPRITE Gavin SP
@@ -194,6 +204,7 @@ label day4_combat:
         guide_dark "“Stronger. Faster. More confident. More {i}powerful{/i}.”"
         guide_dark "“Such power is enviable.”"
         guide_dark "“It will be a great catalyst for the future.”"
+        pause 1.0
 
         ## SPRITE Gavin SD
         show gavin sad
@@ -215,8 +226,14 @@ label day4_combat:
         guide_dark "“Soon, the end will be upon us. And you will be ready.”"
 
     ## FADE TO BLACK
-    call end_scene_fade_to_black
-    guide "... Forgive me."
+    scene backdrop_black with dissolve
+    stop music fadeout 1.0
+    stop music_extra fadeout 1.0
+    stop sound fadeout 1.0
+    stop sound_extra fadeout 1.0
+    guide "{cps=20}... Forgive me.{/cps}"
+    call end_scene_fade_to_black from _call_end_scene_fade_to_black_6
+    
     ## END SCENE
     return
 
@@ -225,7 +242,8 @@ label day4_dream:
     ## FADE IN to MISTY BG.
     ## DRONING ambiance sfx. Something that sounds science lab-like.
     scene backdrop_mist with fade
-    play music foley_lab_ambiance fadein 1.0
+    stop music fadeout 1.0
+    play music foley_lab_ambiance fadein 1.0 volume 0.5
     lucas "“... This can’t be right. Can it?”"
     lucas "“This isn’t some... mystical cave or secret fountain entrance.”"
     lucas "“It’s just some... {i}lab{/i}.”"
@@ -238,7 +256,7 @@ label day4_dream:
     gwen "“I know, Lucas. Just a little further.”"
 
     ## A pause for FOOTSTEPS
-    play sound footsteps
+    play sound footsteps_echoing
     pause 1.0
     guide "“... How do we know it isn’t man-made?”"
     gwen "“What?”"
@@ -273,8 +291,11 @@ label day4_dream:
 
     ## Sound of a KEYCARD and a MECHANICAL DOOR sliding open. Something POWERS ON (no idea what this would sound like at the moment)
     play sound keycard_swipe
+    pause 1.0
     play sound science_door
+    pause 2.0
     play sound light_switch
+    pause 1.0
     play music_extra foley_electric_hum volume 0.4
     lucas "“What -- oh -- oh, god --”"
     gwen "“What the -- it’s a bloodbath in here! Get your weapons --”"
@@ -283,6 +304,8 @@ label day4_dream:
     gwen "“This blood is pretty fresh, though.”"
     mordred "“Keenly observed, young lady.”"
     mordred "“That doesn’t mean the danger that caused this hasn’t passed.”"
+    pause 1.5
+    
     lucas "“Wait... that’s the thing! The thing they were talking about on the radio!”"
     lucas "“The machine they were gonna try to stop the Corruption with!”"
     lucas "“And -- and it looks like it’s complete!”"
@@ -305,7 +328,8 @@ label day4_dream:
     guide "“Just {i}do it{/i}.”"
 
     ## FOOTSTEPS sfx
-    play sound footsteps
+    play sound footsteps_concrete
+    pause 3.5
     lucas "“... Oh...”"
     guide "“Yeah. ‘Oh’. Say it out loud, Lucas.”"
     lucas "“... It... I-It’s...”"
@@ -313,7 +337,8 @@ label day4_dream:
 
     ## FADE OUT droning ambiance
     ## FADE IN sinister music
-    $ cf('audio/bgm/bgm_dangerous_path.ogg')
+    stop music fadeout 1.0
+    play music bgm_dangerous_path fadein 1.0
     guide "Gods, you were such a bastard. Leading us on like that."
     guide "Such a bastard for making it so {i}obvious{/i} from the start, like this is all some joke to you."
     guide "You always did like to pretend you were so helpful while you were pulling the wool over our eyes."
@@ -323,12 +348,13 @@ label day4_dream:
     guide "You’ll never be satisfied. You’ll never have enough, and you’ll keep consuming everything until you don’t even have your own fingers to gnaw on."
     guide "Because there always has to be {i}more{/i}, right?"
     guide "Just get this over with. Say it. Say the riddle."
-    mordred "“{b}{cps=20}Close your eyes, and there I am. I can be heavy, yet I weigh not a gram.{/cps}{/b}”"
-    mordred "“{b}{cps=20}When I’m not repelled, I’m all you can see. Make sure I’m around, and all sense will be free.{/cps}{/b}”"
+    mordred "“{b}{cps=30}Close your eyes, and there I am.\nI can be heavy, yet I weigh not a gram.{/cps}{/b}”"
+    mordred "“{b}{cps=30}When I’m not repelled, I’m all you can see.\nMake sure I’m around, and all sense will be free.{/cps}{/b}”"
     gwen "“Oh, shi --”"
 
     ## The MUSIC stops and the MISTY BG disappears immediately.
-    call end_scene_fade_to_black_instant
+    $ transition_hold_seconds = 3.0
+    call end_scene_fade_to_black_instant_pause from _call_end_scene_fade_to_black_instant_pause
     
     ## END SCENE
     return

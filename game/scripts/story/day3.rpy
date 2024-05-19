@@ -1,19 +1,19 @@
 label day3_morning:
     'DAY 3 - MORNING - IF TIME'
-    call hero_paths_choice
+    call hero_paths_choice from _call_hero_paths_choice_1
     return
 
 label day3_combat:
     ## NEW SCENE: Day 3 combat
     ## FADE IN to WASTELAND. Hollow wind or desert sound.
-    scene wasteland
-    with fade
+    pause 1.0
+    scene wasteland with fade
     play music foley_desert_wind fadein 1.0
 
     ## The group is traveling in search of examples of more obvious malevolent forces. What once might have been a sprawling city can barely be discerned from the rest of the landscape, with only a few walls or building frames sticking up here or there.
     
     ## SLIDE IN Lance
-    show lance at grouped_left_pos2
+    show lance at grouped_left_lance
     with easeinleft
     lance "“It’s so obvious no one has been here in a long time.”"
     lance "“I thought we were past you wasting our time, Guide.”"
@@ -21,17 +21,17 @@ label day3_combat:
     guide "“Hold your tongue for longer than five seconds and you might actually learn something.”"
     
     ## SLIDE IN Gavin
-    show gavin at grouped_left_pos1
+    show gavin at grouped_right_gavin
     with easeinleft
     gavin "“Yeah, Lance... sheesh.”"
 
     ## SLIDE IN Morgan
-    show morgan at grouped_left_pos3
+    show morgan at grouped_right_morgan
     with easeinleft
     lance "“Oh, I’m sorry, I didn’t realize we were monks now.”"
 
     ## SPRITE Morgan A
-    show morgan annoyed
+    show morgan annoyed with dissolve
     morgan "“What’s a monk..?”"
     gavin "“I think it’s like half a monkey.”"
 
@@ -40,7 +40,7 @@ label day3_combat:
     morgan "“... What’s a monkey..?”"
 
     ## LANCE tries not to laugh.
-    show lance happy
+    show lance happy with dissolve
     lance "“Ppfft.”"
 
     ## SPRITE Morgan ANG
@@ -56,6 +56,7 @@ label day3_combat:
     show morgan neutral
     show lance neutral
     show gavin neutral
+    with dissolve
     guide "“For the love of -- be quiet, all of you.”"
     guide "Gods of patience and mercy, grant me strength while I remember why I decided to never have kids..."
     guide "“Listen up. I told you all why we came out here, now I will tell you again.”"
@@ -73,6 +74,7 @@ label day3_combat:
 
     ## SPRITES all N
     show gavin neutral
+    pause 1.0
     morgan "“... Maybe we can try that bigger building over there? It looks like it was important once.”"
     lance "“Crumbled pillars, barred window frames, stone steps... either a place of government or finance.”"
     lance "“Not a bad idea.”"
@@ -82,16 +84,16 @@ label day3_combat:
     hide gavin
     hide morgan
     hide lance
-    with fade
+    with dissolve
 
     ## FADE IN to DESTROYED BUILDING INTERIOR. Some sort of echoey ambiance.
     scene ruined_building_interior with fade
     play music foley_abandoned_building fadein 1.0
     
     ## FADE IN character sprites.
-    show gavin at grouped_left_pos1
-    show morgan at grouped_left_pos2
-    show lance at grouped_left_pos3
+    show gavin at grouped_left_gavin
+    show morgan at grouped_left_lance
+    show lance at grouped_left_morgan
     with dissolve
 
     guide "I can already feel the chill of tragedy and pain deep in the walls."
@@ -99,19 +101,20 @@ label day3_combat:
     ## SLIDE OUT Morgan, CENTER ON Gavin and Lance
     hide morgan with easeoutleft
 
-    show gavin at grouped_center_pos1
-    show lance at grouped_center_pos2
+    show gavin at grouped_center_gavin
+    show lance at grouped_center_lance
     with move
 
     ## SPRITE Gavin H
     show gavin happy
+    play sound rubber_duck
     gavin "“Whoa, check this out! There’s half a rubber duck sitting on the desk here!”"
     lance "“You know what a rubber duck is, but not a monkey?”"
     lance "“Let me see that.”"
 
     ## SPRITE Gavin A
-    play sound rubber_duck
     show gavin annoyed
+    play sound rubber_duck
     gavin "“No way! I found it first.”"
 
     ## SPRITE Lance A
@@ -152,7 +155,7 @@ label day3_combat:
     
     ## SLIDE IN Morgan
     ## SPRITE Morgan UNC
-    show morgan uncomfortable at grouped_center_pos3
+    show morgan uncomfortable at grouped_center_morgan
     with easeinright
     morgan "“... It’s here..!”"
     gavin "“Was it attracted by our noise? Or by..?”"
@@ -165,22 +168,24 @@ label day3_combat:
 
     ## There’s a ROAR, BEGIN COMBAT
     play sound monster_roar
-    "call combat_encounter_corrupted_weak"
-    
+    call combat_encounter_corrupted_weak from _call_combat_encounter_corrupted_weak
     ## AFTER COMBAT
     scene ruined_building_interior with fade
-    play music foley_abandoned_building fadein 1.0
+    play music bgm_the_two_siblings
+    play music_extra foley_abandoned_building fadein 1.0
 
     ## SPRITES Gavin UNC, Morgan UNC, Lance N
-    show gavin uncomfortable at grouped_left_pos1
-    show morgan uncomfortable at grouped_left_pos2
-    show lance at grouped_left_pos3
+    show gavin uncomfortable at grouped_center_gavin
+    show morgan uncomfortable at grouped_center_morgan
+    show lance at grouped_center_lance
+    with dissolve
+    call restore_from_combat from _call_restore_from_combat_3
     gavin "“I -- I’ve never seen one so close, until now... it was always the adults who fought them, or... disappeared with them.”"
     gavin "“I... I didn’t know they were...”"
     morgan "“They’re -- they {i}were{/i} -- human...”"
 
     ## SPRITE Lance A
-    show lance annoyed
+    show lance annoyed with dissolve
     lance "“Really? You guys didn’t know {i}this?{/i}”"
     lance "“Not knowing what a monkey is, fair enough. But how could you not know the Corrupted were once living things?”"
     lance "“It’s like Guide said; they weren’t born from nothing.”"
@@ -195,6 +200,7 @@ label day3_combat:
     show gavin sad
     show morgan annoyed
     show lance neutral
+    with dissolve
     gavin "“... We didn’t know...”"
     gavin "“Why wouldn’t they have told us? The adults we traveled with -- they had to have known, didn’t they?”"
     gavin "“Why didn’t they tell us..?”"
@@ -216,14 +222,18 @@ label day3_combat:
     
     ## SPRITES Gavin SD, Morgan SD
     ## Everyone pauses for a moment in contemplation.
-    "{w=1.0}"
+    pause 0.5
+    show gavin sad
+    show morgan sad
+    pause 0.5
     gavin "“... Can we go home now?”"
     guide_dark "He can’t be tired already. That was only one --"
     guide "We can go home."
 
     ## FADE OUT
     ## FADE OUT Music/sfx
-    call end_scene_fade_to_black
+    $ transition_hold_seconds = 2.0
+    call end_scene_fade_to_black_pause from _call_end_scene_fade_to_black_pause
 
     ## END SCENE
     return
@@ -241,18 +251,18 @@ label day3_dinner:
     ## FADE IN to CABIN INTERIOR
     ## FADE IN Fireplace sfx, FADE IN Music
     scene cabin_interior with fade
-    play music_extra foley_fireplace
+    play music_extra foley_fireplace volume 0.5
     play music bgm_transient fadein 1.0
     
     ## SPRITES Gavin SD, Morgan SD, Lance N
-    show gavin sad at linedup_center_pos1
-    show lance at linedup_center_pos2
-    show morgan sad at linedup_center_pos3
+    show gavin sad at linedup_center_gavin
+    show lance at linedup_center_lance
+    show morgan sad at linedup_center_morgan
     with dissolve
     gavin "“... Guide? How do we know we’re not corrupted?”"
     guide "“You would know.”"
     gavin "“But how?”"
-    guide "“...”"
+    guide "“{cps=30}...{/cps}”"
     guide "“You would hate everyone, and everything. Even those you once loved most.”"
     guide "“Everything would feel pointless, a waste of time and energy to care for. At the same time, those same things would be valuable to you only in what they could offer in service to your own joy or survival.”"
     guide "“You would want everything they could offer, without providing anything in return.”"
@@ -279,6 +289,8 @@ label day3_dinner:
     lance "“You mean their organs? Their body? Sure, that’s all probably still there.”"
     lance "“Even if it’s nothing more than disintegrated {i}goop{/i}.”"
     lance "“The body is still there, though changed. But the actual {i}person{/i}? I assure you, that part died ages ago.”"
+
+    show morgan angry at sprite_shake_light
     morgan "“That can’t be true!”"
     guide "“Morgan, calm yourself.”"
     guide "“Lance is correct. All that remains of the person the Corrupted once was is their deepest hatred and sorrow.”"
@@ -302,7 +314,7 @@ label day3_dinner:
     gavin "“Guys -- guys, please, let Guide tell us. I know he has something more to say about all of this.”"
     
     ## SPRITE Gavin SD
-    show gavin sad
+    show gavin sad with dissolve
     gavin "“Right?”"
 
     ## CHOICE
@@ -328,6 +340,7 @@ label day3_dinner:
         ## SPRITE Lance A
         show lance annoyed
         lance "“I’ll take your decision to be quiet as a point for my case.”"
+        show gavin neutral
         lance "“Think about it, Morgan; where do we decide what’s human and what {i}isn’t?{/i}”"
         lance "“Is a {i}thing{/i} that doesn’t think, speak, or {i}feel{/i} like we do human?”"
         morgan "“That doesn’t matter!”"
@@ -340,7 +353,7 @@ label day3_dinner:
         morgan "“That’s not a good comparison! They’re not crabs!”"
         morgan "“They could still be alive in there, those people. Suffering, in a lot of pain.”"
         morgan "“They have to be. The Corrupted feed off of energy and life, right?”"
-        morgan "“It has to be..."
+        morgan "“It has to be...”"
         morgan "“Because they’re alive! Right?”"
         gavin "“I -- I don’t think they are. When we destroyed the Corrupted earlier today, it just sort of... melted.”"
         gavin "“People -- humans -- don’t do that.”"
@@ -349,11 +362,12 @@ label day3_dinner:
         morgan "“What’s normal is different now!”"
 
         ## SPRITES Morgan UNC, Lance UNC, Gavin ANG
-        show morgan uncomfortable
-        show lance uncomfortable
         show gavin angry
         gavin "“My mom didn’t {i}melt{/i} when {i}she{/i} died!"
-        gavin "“Maybe Lance is right. Me, I don’t think it matters what they are.”"
+        show morgan uncomfortable
+        show lance uncomfortable
+        with dissolve
+        gavin "“... Maybe Lance is right. Me, I don’t think it matters what they are.”"
 
         ## SPRITE Gavin A
         show gavin angry
@@ -368,7 +382,7 @@ label day3_dinner:
         lance "“Oh, for the love of -- get it through your skull, Morgan!”"
         lance "“Whatever is there isn’t worth {i}saving{/i}.”"
         lance "“All it does is hurt us.”"
-        morgan "“...”"
+        morgan "“{cps=30}...{/cps}”"
 
         ## SPRITE Morgan A
         show morgan annoyed
@@ -401,7 +415,7 @@ label day3_dinner:
         show morgan neutral
         gavin "“Well, Guide?”"
         gavin "“Anything to say to... all of that?”"
-        guide "“...”"
+        guide "“{cps=30}...{/cps}”"
         guide "“You all have very valid points.”"
         guide "“To fight and kill what seeks to kill you and think no deeper of it is natural.”"
         guide "“And to mourn the loss of agency and life is profoundly empathetic.”"
@@ -420,7 +434,7 @@ label day3_dinner:
         hide gavin with easeoutleft
         hide lance with easeoutleft
         pause 0.5
-        hide morgan with easeoutleft
+        hide morgan with easeoutright
 
         guide_dark "So close, and yet so far."
         guide_dark "I have to say though, that was {i}extremely{/i} entertaining."
@@ -429,12 +443,11 @@ label day3_dinner:
         guide_dark "That their predecessors failed them? They know that. That’s all they’ve known."
         guide_dark "What they don’t understand is how and why."
         guide_dark "And why {i}you{/i} will do the same."
-        guide "..."
+        guide "{cps=30}...{/cps}"
         guide "I know. You don’t have to rub it in."
 
         ## The screen throbs red
-        show overlay_pain with screen_shake_mid
-        hide overlay_pain
+        show overlay_red onlayer foremost at flash_overlay
         guide_dark "{i}Thus, always{/i}."
 
         ## FADE OUT
@@ -451,7 +464,6 @@ label day3_dinner:
         show gavin annoyed
         show lance neutral
         show morgan annoyed
-
         guide "“As Morgan said last night, the Corrupted are mutated masses. They {i}are{/i} dangerous, and they {i}are{/i} necrotic in nature.”"
         guide "“And, as Morgan said, it would sooner kill you than run away. The promise of taking a life is too great to turn away from.”"
         guide "“The people they once were truly no longer exist. The fact that they were once human does not change what they desire now. All that matters to the Corrupted is their own survival and growth of power.”"
@@ -463,8 +475,7 @@ label day3_dinner:
         guide "“Yes, exactly.”"
 
         ## FADE OUT to black, FADE IN to image of pandemonium/some sort of societal chaos
-        "Syd: Need 'FADE IN to image of pandemonium/some sort of societal chaos'"
-        # scene urban_chaos
+        scene burning_city with dissolve
         guide "“The Corruption did not spread like a normal disease, like a cold or flu. The disease was neither virus nor bacteria, nor was it a fungus or parasite.”"
         guide "“Because the Corruption sought the most powerful people first, political and financial leaders, research for a cure began immediately, but there was nothing scientists could find to cure, in the traditional sense.”"
         guide "“It is a disease of the very soul itself. It is {i}incurable{/i}.”"
@@ -480,12 +491,13 @@ label day3_dinner:
         
         ## FADE OUT to black, FADE IN to CABIN INTERIOR
         scene cabin_interior with Fade(0.5, 1.0, 0.5)
+        stop music fadeout 2.0
 
         ## SPRITES Gavin SD, Morgan SD, Lance SD
         ## The HEROES sit in silence yet again.
-        show gavin sad
-        show lance sad
-        show morgan sad
+        show gavin sad at linedup_center_gavin
+        show lance sad at linedup_center_lance
+        show morgan sad at linedup_center_morgan
         with dissolve
 
         guide_dark "Too much all at once -- you’ve broken their hearts."
@@ -514,7 +526,8 @@ label day3_dinner:
         show gavin surprised
         show morgan surprised
         show lance uncomfortable
-
+        pause 1.25
+        
         ## The HEROES look at each other nervously. They FADE OUT from the table one by one.
         hide gavin with dissolve
         hide morgan with dissolve
@@ -529,27 +542,25 @@ label day3_dinner:
         guide_dark "Whatever helps you to help {i}them{/i}."
 
         ## The screen throbs red
-        show overlay_pain with screen_shake_mid
-        hide overlay_pain
+        show overlay_red onlayer foremost at flash_overlay
         guide_dark "{i}Thus, always{/i}."
         jump day3_dinner_end
 
     ## FADE OUT
     label day3_dinner_end:
-        call end_scene_fade_to_black
-    
+        $ transition_hold_seconds = 1.5
+        call end_scene_fade_to_black_pause from _call_end_scene_fade_to_black_pause_1
     ## END SCENE
     return
 
 label day3_dream:
     ## NEW SCENE: Night 3 dream
     ## BLACK SCREEN. The sound of jets, gunfire, screaming, explosions.
-    scene backdrop_black with fade
-    play music foley_war_sounds fadein 2.0 volume 0.75
-    play music_extra foley_crowd_panic fadein 4.0 volume 0.5
+    play music foley_war_sounds fadein 2.0 volume 1.0
+    play music_extra foley_crowd_panic fadein 4.0 volume 0.75
 
     ## Sound of RUNNING
-    play sound running volume 0.75
+    play sound running volume 0.5
     gwen "“Lucas, keep up! We have to go!”"
     lucas "“I -- I can’t. I can’t -- breathe --”"
     guide "“Gwen, grab one arm, I’ll grab the other.”"
@@ -558,7 +569,7 @@ label day3_dream:
     ## Sound of a jet flying {i}very{/i} close. A very loud explosion nearby.
     play sound jet_flyby volume 0.75
     scene backdrop_mist_red with Fade(0.5, 0.0, 0.5)
-    play sound_extra explosion_nearby volume 1.0
+    play sound_extra explosion_nearby volume 0.8
     guide "“Shit --!”"
     guide_dark "The first time you ever swore, if I recall. Rather tame, given the circumstances."
     guide "You weren’t there for that."
@@ -572,6 +583,8 @@ label day3_dream:
     guide "“What the hell?!{w=1.0} Back off!{w=0.75} Argh!{w=1.0} What is wrong with these people?!”"
     guide "“It’s like they can’t even see us!”"
     gwen "“Lucas, don’t you {i}dare{/i} pass out now.”"
+    pause 1.0
+
     guide_dark "And so you ran, and ran. And all the other people you saw ignored three lonely children without any parents or family, thinking only of saving their own hides."
     guide_dark "And when you got to the barricade and pleaded for your lives with everyone else..."
     guide_dark "What was it they said? That this was a “quarantine zone?” That no one was allowed in or out? Not even their own friends or families?"
@@ -589,14 +602,15 @@ label day3_dream:
 
     ## The military on the other side of the fence is suddenly assaulted by Corrupted creatures. This is symbolized by monstrous sounds, followed by yelling and gunfire.
     play sound monster_roar
-    play music_extra foley_crowd_panic fadein 1.0 volume 0.75
+    play music_extra foley_crowd_panic fadein 0.0 volume 0.8
     pause 1.0
     play sound_extra gunfire
     pause 0.5
     
     guide_dark "What fools, to think they could just fence off the problem and keep their little status quo going on the outside."
     guide_dark "It worked for so long, or so they thought. Then when it came knocking at their door, they hadn’t the slightest clue how to keep their fragile facade in place."
-    
+    pause 0.5
+
     ## SFX Fence rattle signifying a gate opening
     play sound fence_hit
     $ mordred_name = "???"
@@ -620,8 +634,10 @@ label day3_dream:
     stop music_extra
     stop sound
     stop sound_extra
+    $ quick_menu = False
     scene backdrop_black
-    with Fade(0.0, 0.0, 0.0)
+    with Fade(0.0, 2.0, 0.0)
+    $ quick_menu = True
     guide_dark "You have to...?"
     guide_dark "You have to... what? Pinch yourself? Hold your breath and count to ten?"
     guide_dark "Waking up won’t make the past go away. Nor will it stop reminding you of the future not yet come to pass."
@@ -651,23 +667,23 @@ label day3_dream:
     guide "It was a warning. It warned us what the future might become."
     guide_dark "So it speaks truth now?"
     guide_dark "Tell me what it said."
-    guide "..."
+    guide "{cps=30}...{/cps}"
 
     ## The screen fades in to the MISTY background, tinted dull green. There’s a “throbbing” ambiance (I can’t think of a better way to describe it -- it’s just an unnerving sound.)
     scene backdrop_mist_green
-    with fade
+    with Fade(0.5, 0.5, 0.5)
     play music bgm_drone_throb
-    play music_extra foley_pulsing
-    guide "{i}This place is a message... and part of a system of messages... pay attention to it!{/i}"
-    guide "{i}Sending this message was important to us. We considered ourselves to be a powerful culture.{/i}"
-    guide "{i}This place is not a place of honor... no highly esteemed deed is commemorated here... nothing valued is here.{/i}"
-    guide "{i}What is here was dangerous and repulsive to us. This message is a warning about danger.{/i}"
-    guide "{i}The danger is in a particular location... it increases towards a center... the center of danger is here... of a particular size and shape, and below us.{/i}"
-    guide "{i}The danger is still present, in your time, as it was in ours.{/i}"
-    guide "{i}The danger is to the body, and it can kill.{/i}"
-    guide "{i}The form of the danger is an emanation of energy.{/i}"
-    guide "{i}The danger is unleashed only if you substantially disturb this place physically.{/i}"
-    guide "{i}This place is best shunned and left uninhabited.{/i}"
+    play music_extra foley_lab_ambiance volume 0.5
+    guide "{i}{cps=20}This place is a message... and part of a system of messages... pay attention to it!{/cps}{/i}"
+    guide "{i}{cps=20}Sending this message was important to us. We considered ourselves to be a powerful culture.{/cps}{/i}"
+    guide "{i}{cps=20}This place is not a place of honor... no highly esteemed deed is commemorated here... nothing valued is here.{/cps}{/i}"
+    guide "{i}{cps=20}What is here was dangerous and repulsive to us. This message is a warning about danger.{/cps}{/i}"
+    guide "{i}{cps=20}The danger is in a particular location... it increases towards a center... the center of danger is here... of a particular size and shape, and below us.{/cps}{/i}"
+    guide "{i}{cps=20}The danger is still present, in your time, as it was in ours.{/cps}{/i}"
+    guide "{i}{cps=20}The danger is to the body, and it can kill.{/cps}{/i}"
+    guide "{i}{cps=20}The form of the danger is an emanation of energy.{/cps}{/i}"
+    guide "{i}{cps=20}The danger is unleashed only if you substantially disturb this place physically.{/cps}{/i}"
+    guide "{i}{cps=20}This place is best shunned and left uninhabited.{/cps}{/i}"
     guide_dark "This place is not a place of honor. We considered ourselves to be a powerful culture. {i}Nothing is valued here.{/i}"
     guide_dark "What a rich and timeless message!"
     guide_dark "The folly of man and its toxic legacy, forever immortalized in every life."
@@ -717,11 +733,16 @@ label day3_dream:
         guide "To be Chosen is to be everything you never thought you would be."
     
     ## There’s a pause. The ambiance slowly fades out. The screen shakes.
-    call end_scene_fade_to_black
+    stop music fadeout 3.0
+    stop music_extra fadeout 3.0
+    stop sound fadeout 3.0
+    pause 1.0
+    scene backdrop_black with Dissolve(1.0)
     gavin "“... Guide..!”" with screen_shake_mid
-    guide "The boy..?"
+    play music bgm_dark_ambient fadein 1.0
+    guide "The boy...?"
     gavin "“Guide!”"
-    ## FADE OUT to black
+
     ## END SCENE
     return
 
@@ -730,10 +751,11 @@ label day3_night_combat:
     ## CABIN INTERIOR, night. GAVIN and LANCE are the two characters on screen
     ## SPRITES Gavin SP, Lance UNC
     scene cabin_interior_night with fade
-    show gavin surprised at grouped_left_pos1
-    show lance uncomfortable at grouped_left_pos2
-    play music bgm_tense_dark
+    show gavin surprised at grouped_center_gavin
+    show lance uncomfortable at grouped_center_lance
+    with dissolve
     gavin "“Guide! Wake up! Morgan -- she’s gone!”"
+    play music bgm_dark_ambient fadein 3.0
     guide "“Gone? What do you mean, ‘gone?’”"
     lance "“It’s my fault. I -- I told her she was being a stupid baby about the whole Corrupted thing --”"
     guide "“The Corrupted?!”"
@@ -756,33 +778,36 @@ label day3_night_combat:
     guide "I can only pray we aren’t too late."
 
     ## The sound of a scream in the distance and a Roar.
-    play sound scream_woman
+    play sound scream_woman volume 0.25
     gavin "“There! Around the corner!”"
+    pause 1.0
 
     ## Fade in GAVIN and LANCE first, then Morgan second.
     ## SPRITES Gavin SP, Lance UNC, Morgan UNC
     ## (If I have time we’ll replace this with a CG of the characters and Morgan backed into a corner by a Corrupted)
-    show gavin surprised at grouped_left_pos1
-    show lance uncomfortable at grouped_left_pos2
-    with fade
-    show morgan uncomfortable at grouped_right_pos3
-    with fade
+    scene wasteland_night_2 with dissolve
+    show gavin surprised at grouped_left_gavin
+    show lance uncomfortable at grouped_left_lance
+    with dissolve
+    show morgan uncomfortable at grouped_right_morgan
+    with dissolve
     gavin "“Morgan!”"
     morgan "“Gavin! Lance! Help me!”"
     guide_dark "Protect the girl! We need her power!"
 
     ## BEGIN BATTLE with strong variant CORRUPTED
     ## (Note: this scene could be massively changed pending time with more dialogue and scene-specific art (I think you called them CGs?))
-    "call combat_encounter_corrupted_strong"
+    call combat_encounter_corrupted_strong_day3_night from _call_combat_encounter_corrupted_strong_day3_night
     
     ## AFTER BATTLE, everyone catches their breath.
     ## SPRITES Gavin SP, Lance UNC, Morgan UNC
     play music bgm_meditative_hang
     scene wasteland_night with fade
-    show gavin surprised at grouped_left_pos1
-    show lance uncomfortable at grouped_left_pos2
-    show morgan uncomfortable at grouped_right_pos3
-    with fade
+    show gavin surprised at grouped_left_gavin
+    show lance uncomfortable at grouped_left_lance
+    show morgan uncomfortable at grouped_right_morgan
+    with dissolve
+    call restore_from_combat from _call_restore_from_combat_4
     guide "“Morgan? Are you injured?”"
     guide_dark "That was too close."
     morgan "“I... I’m okay.”"
@@ -805,7 +830,7 @@ label day3_night_combat:
 
     ## LANCE becomes teary and emotional.
     ## SPRITE Lance UNC
-    show lance uncomfortable
+    show lance uncomfortable with dissolve
     lance "“Nothing left in the Corrupted knows anything about compassion or love!”"
 
     ## SPRITES Gavin SP, Morgan SP
@@ -813,18 +838,20 @@ label day3_night_combat:
     show morgan surprised
     lance "“I saw what they did to my family! I {i}know{/i} what I’m talking about! Okay?!”"
     lance "“They {i}hated{/i} me before there wasn’t anything left of them!”"
+    pause 0.75
 
     ## SPRITES Gavin SD, Morgan SD, Lance SD
     show gavin sad
     show lance sad
     show morgan sad
+    with dissolve
     morgan "“Lance... why didn’t you tell us the truth? How long have your parents been gone?”"
     morgan "“Gavin and I can hardly even remember our families. Did you think we were going to judge you?”"
     lance "“It had only just happened when I met you guys.”"
     lance "“You two were always talking about how much {i}fun{/i} you always had making new friends in new survivor groups, and...”"
 
     ## SPRITE Lance A
-    show lance annoyed
+    show lance annoyed with dissolve
     lance "“... I didn’t want to be the odd one out. I’m {i}tired{/i} of being the odd one out.”"
     lance "“I didn’t know anyone outside of my family until I knew you guys. It was just me, Mom, Dad... my little brother...”"
 
@@ -835,7 +862,9 @@ label day3_night_combat:
     lance "“I just want them back. I don’t want {i}this{/i}.”"
     
     ## GAVIN and MORGAN struggle to think of what to say.
-    gavin "“{w=0.5}We can be your family, Lance. If you’ll let us.”"
+    pause 0.75
+    show gavin neutral with dissolve
+    gavin "“We can be your family, Lance. If you’ll let us.”"
     gavin "“You know that, right?”"
     gavin "“We can’t be your mom and dad, but that doesn’t mean we can’t be... something else.”"
     morgan "“... We’d feel less weird about you if you were more honest with us.”"
@@ -847,8 +876,7 @@ label day3_night_combat:
     guide "I’m sick of {i}you{/i}."
 
     ## The screen shakes and throbs red
-    show overlay_pain with screen_shake_mid
-    hide overlay_pain
+    show overlay_red onlayer foremost at flash_overlay
     guide_dark "{i}Get used to me. I’m not going anywhere.{/i}"
     guide_dark "{i}It’s almost my turn.{/i}"
     gavin "“Guide? You don’t look good.”"
@@ -863,7 +891,8 @@ label day3_night_combat:
     morgan "“We should go home, shouldn’t we?”"
     lance "“... Home. Something like that.”"
     guide_dark "“We will discuss new rules when we return to the cabin, to ensure your safety.”"
-    guide "Get out of my throat! This isn’t your place to dictate!"
+    pause 0.5
+    guide "Get out of my throat! This isn’t your place to dictate!" with screen_shake_mid
     guide_dark "If you think you’ve been in control before the Chosen arrived, you have been {i}so{/i} sorely mistaken."
     guide_dark "“All three of you play a role too important to risk by such rash decisions. You have to reach your full potential before you can rush headfirst towards your destiny.”"
 
@@ -882,16 +911,19 @@ label day3_night_combat:
     guide_dark "“Now, go. I will watch our backs.”"
 
     ## One by one, the HEROES fade from the screen.
-    hide morgan with fade
-    hide lance with fade
-    hide gavin with fade
+    hide morgan with dissolve
+    hide lance with dissolve
+    hide gavin with dissolve
 
     ## There’s a GASP sound effect as the GUIDE regains control of himself.
-    guide "Gods! I couldn’t breathe!"
+    play sound gasp_man volume 0.33
+    guide "Gods! I couldn’t breathe!" with screen_shake_mid
     guide_dark "I suppose it’s been a while since I’ve had to consider such trivial functions."
     guide_dark "Now. {i}Walk{/i}."
 
     ## FADE OUT
+    $ transition_hold_seconds = 2.0
+    call end_scene_fade_to_black_pause from _call_end_scene_fade_to_black_pause_2
+    
     ## END SCENE
-    call end_scene_fade_to_black
     return

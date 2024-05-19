@@ -1,0 +1,32 @@
+Date : 2024-05-03 12:16:13
+Directory : d:\Google Drive\programming\PyProjects\the-thoughtful-jam\Untitled-VN\game\scripts\story
+Total : 8 files,  2125 codes, 411 comments, 415 blanks, all 2951 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| Ren'Py   |          8 |      2,125 |        411 |        415 |      2,951 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++---------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                    | files      | code       | comment    | blank      | total      |
++---------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                       |          8 |      2,125 |        411 |        415 |      2,951 |
++---------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++---------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                                                                | language | code       | comment    | blank      | total      |
++---------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| d:\Google Drive\programming\PyProjects\the-thoughtful-jam\Untitled-VN\game\scripts\story\day0.rpy       | Ren'Py   |         44 |          9 |         11 |         64 |
+| d:\Google Drive\programming\PyProjects\the-thoughtful-jam\Untitled-VN\game\scripts\story\day1.rpy       | Ren'Py   |        291 |         48 |         65 |        404 |
+| d:\Google Drive\programming\PyProjects\the-thoughtful-jam\Untitled-VN\game\scripts\story\day2.rpy       | Ren'Py   |        319 |         49 |         58 |        426 |
+| d:\Google Drive\programming\PyProjects\the-thoughtful-jam\Untitled-VN\game\scripts\story\day3.rpy       | Ren'Py   |        626 |        147 |        124 |        897 |
+| d:\Google Drive\programming\PyProjects\the-thoughtful-jam\Untitled-VN\game\scripts\story\day4.rpy       | Ren'Py   |        244 |         54 |         37 |        335 |
+| d:\Google Drive\programming\PyProjects\the-thoughtful-jam\Untitled-VN\game\scripts\story\day5.rpy       | Ren'Py   |         48 |         20 |         12 |         80 |
+| d:\Google Drive\programming\PyProjects\the-thoughtful-jam\Untitled-VN\game\scripts\story\ending.rpy     | Ren'Py   |        248 |         83 |         61 |        392 |
+| d:\Google Drive\programming\PyProjects\the-thoughtful-jam\Untitled-VN\game\scripts\story\hero_paths.rpy | Ren'Py   |        305 |          1 |         47 |        353 |
+| Total                                                                                                   |          |      2,125 |        411 |        415 |      2,951 |
++---------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+

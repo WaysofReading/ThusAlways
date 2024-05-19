@@ -111,7 +111,7 @@ define gui.name_ypos = 0
 ## aligned, 0.5 for centered, and 1.0 for right-aligned.
 define gui.name_xalign = 0.0
 
-define gui.namebox_width = 450
+define gui.namebox_width = 500
 define gui.namebox_height = 54
 
 ## The borders of the box containing the character's name, in left, top, right,
@@ -120,7 +120,7 @@ define gui.namebox_borders = Borders(5, 5, 75, 5)
 
 ## If True, the background of the namebox will be tiled, if False, the
 ## background of the namebox will be scaled.
-define gui.namebox_tile = True
+define gui.namebox_tile = False
 
 
 ## The placement of dialogue relative to the textbox. These can be a whole

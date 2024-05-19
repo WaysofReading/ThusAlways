@@ -1,12 +1,64 @@
-label gavin_path:
+# Variables for visited branches for each hero
+define gavin_seen_today = False
+define lance_seen_today = False
+define morgan_seen_today = False
 
+define gavin_duty_seen = False
+define gavin_happiness_seen = False
+define gavin_family_seen = False
+
+define lance_morality_seen = False
+define lance_knowlege_seen = False
+define lance_relationships_seen = False
+
+define morgan_value_seen = False
+define morgan_preservation_seen = False
+define morgan_flaws_seen = False
+
+label hero_paths_choice:
+    $ gavin_seen_today = False
+    $ lance_seen_today = False
+    $ morgan_seen_today = False
+
+    menu hero_paths_choice_menu:
+        'Gavin' if not gavin_seen_today:
+            call hero_paths_gavin
+            $ gavin_seen_today = True
+        'Gavin (disabled)' if gavin_seen_today:
+            pass
+        'Lance' if not lance_seen_today:
+            call hero_paths_lance
+            $ lance_seen_today = True
+        'Lance (disabled)' if lance_seen_today:
+            pass
+        'Morgan' if not morgan_seen_today:
+            call hero_paths_morgan
+            $ morgan_seen_today = True
+        'Morgan (disabled)' if morgan_seen_today:
+            pass
+    
+    if not all([gavin_seen_today, lance_seen_today, morgan_seen_today]):
+        jump hero_paths_choice_menu
+    
+    return
+
+label hero_paths_gavin:
     menu:
-        "Duty":
+        "Duty" if not gavin_duty_seen:
             call gavin_duty
-        "Happiness":
+            $ gavin_duty_seen = True
+        "Duty (disabled)" if gavin_duty_seen:
+            pass
+        "Happiness" if not gavin_happiness_seen:
             call gavin_happiness
-        "Family":
+            $ gavin_happiness_seen = True
+        "Happiness (disabled)" if gavin_happiness_seen:
+            pass
+        "Family" if not gavin_family_seen:
             call gavin_family
+            $ gavin_family_seen = True
+        "Family (disabled)" if gavin_family_seen:
+            pass
     return
 
     label gavin_duty:
@@ -93,15 +145,23 @@ label gavin_path:
             $ gavin_score = gavin_score - 1
             return
 
-label lance_path:
-
+label hero_paths_lance:
     menu:
-        "Duty":
+        "Morality" if not lance_morality_seen:
             call lance_morality
-        "Happiness":
+            $ lance_morality_seen = True
+        "Morality (disabled)" if lance_morality_seen:
+            pass
+        "Knowledge" if not lance_knowlege_seen:
             call lance_knowledge
-        "Family":
-            call lance_family
+            $ lance_knowlege_seen = True
+        "Knowledge (disabled)" if lance_knowlege_seen:
+            pass
+        "Relationships" if not lance_relationships_seen:
+            call lance_relationships
+            $ lance_relationships_seen = True
+        "Family (disabled)" if lance_relationships_seen:
+            pass
     return
 
     label lance_morality:
@@ -160,7 +220,7 @@ label lance_path:
             $ lance_score = lance_score - 1
             return
 
-    label lance_family:
+    label lance_relationships:
         menu:
             'Maybe, but they\'re not common.':
                 call lance_relationships_not_common
@@ -188,15 +248,23 @@ label lance_path:
             $ lance_score = lance_score - 1
             return
 
-label morgan_path:
-
+label hero_paths_morgan:
     menu:
-        "Duty":
+        "Value" if not morgan_value_seen:
             call morgan_life_value
-        "Happiness":
+            $ morgan_value_seen = True
+        "Value (disabled)" if morgan_value_seen:
+            pass
+        "Preservation" if not morgan_preservation_seen:
             call morgan_preservation
-        "Family":
+            $ morgan_preservation_seen = True
+        "Preservation (disabled)" if morgan_preservation_seen:
+            pass
+        "Flaws" if not morgan_flaws_seen:
             call morgan_flaws
+            $ morgan_flaws_seen = True
+        "Flaws (disabled)" if morgan_flaws_seen:
+            pass
     return
 
     label morgan_life_value:

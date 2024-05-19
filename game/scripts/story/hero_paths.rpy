@@ -22,17 +22,17 @@ label hero_paths_choice:
 
     menu hero_paths_choice_menu:
         'Gavin' if not gavin_seen_today:
-            call hero_paths_gavin
+            call hero_paths_gavin from _call_hero_paths_gavin
             $ gavin_seen_today = True
         'Gavin (disabled)' if gavin_seen_today:
             pass
         'Lance' if not lance_seen_today:
-            call hero_paths_lance
+            call hero_paths_lance from _call_hero_paths_lance
             $ lance_seen_today = True
         'Lance (disabled)' if lance_seen_today:
             pass
         'Morgan' if not morgan_seen_today:
-            call hero_paths_morgan
+            call hero_paths_morgan from _call_hero_paths_morgan
             $ morgan_seen_today = True
         'Morgan (disabled)' if morgan_seen_today:
             pass
@@ -45,17 +45,17 @@ label hero_paths_choice:
 label hero_paths_gavin:
     menu:
         "Duty" if not gavin_duty_seen:
-            call gavin_duty
+            call gavin_duty from _call_gavin_duty
             $ gavin_duty_seen = True
         "Duty (disabled)" if gavin_duty_seen:
             pass
         "Happiness" if not gavin_happiness_seen:
-            call gavin_happiness
+            call gavin_happiness from _call_gavin_happiness
             $ gavin_happiness_seen = True
         "Happiness (disabled)" if gavin_happiness_seen:
             pass
         "Family" if not gavin_family_seen:
-            call gavin_family
+            call gavin_family from _call_gavin_family
             $ gavin_family_seen = True
         "Family (disabled)" if gavin_family_seen:
             pass
@@ -64,11 +64,11 @@ label hero_paths_gavin:
     label gavin_duty:
         menu:
             'It\'s a calling, not a certainty':
-                call gavin_duty_calling
+                call gavin_duty_calling from _call_gavin_duty_calling
             'This is a sacred mission, indeed':
-                call gavin_duty_sacred_mission
+                call gavin_duty_sacred_mission from _call_gavin_duty_sacred_mission
             'Do you really believe you\'re special?':
-                call gavin_duty_special
+                call gavin_duty_special from _call_gavin_duty_special
         return
 
         label gavin_duty_calling:
@@ -92,11 +92,11 @@ label hero_paths_gavin:
     label gavin_happiness:
         menu:
             'Happiness involves others':
-                call gavin_happiness_others
+                call gavin_happiness_others from _call_gavin_happiness_others
             'Happiness is very personal':
-                call gavin_happiness_personal
+                call gavin_happiness_personal from _call_gavin_happiness_personal
             'Happiness is fleeting':
-                call gavin_happiness_fleeting
+                call gavin_happiness_fleeting from _call_gavin_happiness_fleeting
         return
 
         label gavin_happiness_others:
@@ -120,11 +120,11 @@ label hero_paths_gavin:
     label gavin_family:
         menu:
             'Family is a choice':
-                call gavin_family_choice
+                call gavin_family_choice from _call_gavin_family_choice
             'Family is blood':
-                call gavin_family_blood
+                call gavin_family_blood from _call_gavin_family_blood
             'Family is a hindrance':
-                call gavin_family_hindrance
+                call gavin_family_hindrance from _call_gavin_family_hindrance
         return
 
         label gavin_family_others:
@@ -148,17 +148,17 @@ label hero_paths_gavin:
 label hero_paths_lance:
     menu:
         "Morality" if not lance_morality_seen:
-            call lance_morality
+            call lance_morality from _call_lance_morality
             $ lance_morality_seen = True
         "Morality (disabled)" if lance_morality_seen:
             pass
         "Knowledge" if not lance_knowlege_seen:
-            call lance_knowledge
+            call lance_knowledge from _call_lance_knowledge
             $ lance_knowlege_seen = True
         "Knowledge (disabled)" if lance_knowlege_seen:
             pass
         "Relationships" if not lance_relationships_seen:
-            call lance_relationships
+            call lance_relationships from _call_lance_relationships
             $ lance_relationships_seen = True
         "Family (disabled)" if lance_relationships_seen:
             pass
@@ -167,11 +167,11 @@ label hero_paths_lance:
     label lance_morality:
         menu:
             'How do you want to be remembered?':
-                call lance_morality_remembered
+                call lance_morality_remembered from _call_lance_morality_remembered
             'It really depends on the circumstance':
-                call lance_morality_circumstance
+                call lance_morality_circumstance from _call_lance_morality_circumstance
             'Morals are false things of a dead society':
-                call lance_morality_false
+                call lance_morality_false from _call_lance_morality_false
         return
 
         label lance_morality_remembered:
@@ -195,11 +195,11 @@ label hero_paths_lance:
     label lance_knowledge:
         menu:
             'No amount of harm is acceptable, but we can still learn from our mistakes':
-                call lance_knowledge_learn_from_mistakes
+                call lance_knowledge_learn_from_mistakes from _call_lance_knowledge_learn_from_mistakes
             'We should try to avoid causing harm in the pursuit of knowledge':
-                call lance_knowledge_avoid_harm
+                call lance_knowledge_avoid_harm from _call_lance_knowledge_avoid_harm
             'Everybody suffers whether we learn something or not':
-                call lance_knowledge_everybody_suffers
+                call lance_knowledge_everybody_suffers from _call_lance_knowledge_everybody_suffers
         return
 
         label lance_knowledge_learn_from_mistakes:
@@ -223,11 +223,11 @@ label hero_paths_lance:
     label lance_relationships:
         menu:
             'Maybe, but they\'re not common.':
-                call lance_relationships_not_common
+                call lance_relationships_not_common from _call_lance_relationships_not_common
             'Of course there is. Love is unconditional.':
-                call lance_relationships_love_is_unconditional
+                call lance_relationships_love_is_unconditional from _call_lance_relationships_love_is_unconditional
             'Everything has a condition.':
-                call lance_relationships_everything_is_conditional
+                call lance_relationships_everything_is_conditional from _call_lance_relationships_everything_is_conditional
         return
 
         label lance_relationships_not_common:
@@ -251,17 +251,17 @@ label hero_paths_lance:
 label hero_paths_morgan:
     menu:
         "Value" if not morgan_value_seen:
-            call morgan_life_value
+            call morgan_life_value from _call_morgan_life_value
             $ morgan_value_seen = True
         "Value (disabled)" if morgan_value_seen:
             pass
         "Preservation" if not morgan_preservation_seen:
-            call morgan_preservation
+            call morgan_preservation from _call_morgan_preservation
             $ morgan_preservation_seen = True
         "Preservation (disabled)" if morgan_preservation_seen:
             pass
         "Flaws" if not morgan_flaws_seen:
-            call morgan_flaws
+            call morgan_flaws from _call_morgan_flaws
             $ morgan_flaws_seen = True
         "Flaws (disabled)" if morgan_flaws_seen:
             pass
@@ -270,11 +270,11 @@ label hero_paths_morgan:
     label morgan_life_value:
         menu:
             'It\'s what you choose it to be.':
-                call morgan_life_value_choice
+                call morgan_life_value_choice from _call_morgan_life_value_choice
             'All life is priceless':
-                call morgan_life_value_priceless
+                call morgan_life_value_priceless from _call_morgan_life_value_priceless
             'Life is meaningless regardless of its form':
-                call morgan_life_value_meaningless
+                call morgan_life_value_meaningless from _call_morgan_life_value_meaningless
         return
 
         label morgan_life_value_choice:
@@ -298,11 +298,11 @@ label hero_paths_morgan:
     label morgan_preservation:
         menu:
             '"To preserve memories of ourselves and the people we cared for"':
-                call morgan_preservation_memories
+                call morgan_preservation_memories from _call_morgan_preservation_memories
             'To record history, so we can remember our roots and avoid repeating the past':
-                call morgan_preservation_history
+                call morgan_preservation_history from _call_morgan_preservation_history
             '"To remember our accomplishments and triumphs over our foes."':
-                call morgan_preservation_triumph
+                call morgan_preservation_triumph from _call_morgan_preservation_triumph
         return
 
         label morgan_preservation_memories:
@@ -326,11 +326,11 @@ label hero_paths_morgan:
     label morgan_flaws:
         menu:
             'Our flaws are meant to be overcome, not define us.':
-                call morgan_flaws_overcome
+                call morgan_flaws_overcome from _call_morgan_flaws_overcome
             'There are other things that define us aside from flaws':
-                call morgan_flaws_other_things
+                call morgan_flaws_other_things from _call_morgan_flaws_other_things
             'Yes. Our flaws are as ingrained as our DNA':
-                call morgan_flaws_ingrained
+                call morgan_flaws_ingrained from _call_morgan_flaws_ingrained
         return
 
         label morgan_flaws_overcome:

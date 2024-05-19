@@ -2,14 +2,13 @@ label day5_morning:
     ## NEW SCENE: Day 5 Morning
     ## FADE IN CABIN INTERIOR
     show cabin_interior with fade
-    play music bgm_transient fadein 1.0
     guide "“Chosen. Come.”"
 
     ## All three HEROES slide on screen from the same side. Or fade in, whichever you think looks/fits better.
     ## SPRITES Gavin SD, Morgan SD, Lance N
-    show gavin sad at grouped_left_pos1
-    show lance at grouped_left_pos2
-    show morgan sad at grouped_left_pos3
+    show lance at grouped_center_gavin
+    show gavin sad at grouped_center_lance
+    show morgan sad at grouped_center_morgan
     with easeinleft
     guide "“It’s time.”"
 
@@ -23,6 +22,7 @@ label day5_morning:
     ## SPRITES Gavin A, Morgan SD, Lance N
     ## The HEROES hesitate.
     show gavin annoyed
+    show lance neutral
     show morgan sad
     pause 0.5
     gavin "“You’re right.”"
@@ -52,9 +52,8 @@ label day5_morning:
     gavin "“Let’s just go.”"
 
     ## LANCE and MORGAN slide off screen. Only GAVIN is left.
-    hide lance
-    hide morgan
-    with easeoutleft
+    hide lance with easeoutleft
+    hide morgan with easeoutright
     gavin "“But first...”"
     gavin "“Are you happy with yourself, Guide?”"
 
@@ -73,7 +72,7 @@ label day5_morning:
 
     label day5_morning_end:
         ## FADE OUT
-        call end_scene_fade_to_black
+        call end_scene_fade_to_black from _call_end_scene_fade_to_black_7
     
     ## END SCENE
     return

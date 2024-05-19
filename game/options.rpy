@@ -53,6 +53,7 @@ define config.has_voice = True
 init python:
     renpy.music.register_channel("sound_extra", "sfx", loop=False)
     renpy.music.register_channel("music_extra", "music", loop=True)
+    renpy.music.register_channel("music_extra2", "music", loop=True)
 ## To allow the user to play a test sound on the sound or voice channel,
 ## uncomment a line below and use it to set a sample sound to play.
 
@@ -202,10 +203,15 @@ init python:
 ## found in the Google Play developer console, under "Monetize" > "Monetization
 ## Setup" > "Licensing".
 
-# define build.google_play_key = "..."
+# define build.google_play_key = "{cps=30}...{/cps}"
 
 
 ## The username and project name associated with an itch.io project, separated
 ## by a slash.
 
 # define build.itch_project = "renpytom/test-project"
+
+
+
+init python:
+    renpy.add_layer("foremost", above="overlay")

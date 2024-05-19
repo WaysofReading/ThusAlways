@@ -1,14 +1,16 @@
 label ending_the_truth:
     ## NEW SCENE: The Truth
     ## Sound of FOOTSTEPS. A DRONING AMBIANCE. A KEYCARD. A MECHANICAL DOOR. All the same sounds the player heard in the dream.
-    play music foley_lab_ambiance fadein 1.0
-    play sound footsteps
-    pause 1.0
+    $ quick_menu = False
+    play music foley_lab_ambiance fadein 0.5 volume 0.5
+    play sound footsteps_echoing
+    pause 3.0
     play sound keycard_swipe
     play sound science_door
     play sound light_switch
     play music_extra foley_electric_hum volume 0.4
-
+    pause 1.0
+    $ quick_menu = True
     ## NO bg or characters on screen yet.
     lance "“I’ve never seen a pre-collapse structure this complete before.”"
     lance "“It’s kind of unnerving.”"
@@ -20,37 +22,46 @@ label ending_the_truth:
     morgan "“Don’t be. We have our Guide with us.”"
     morgan "“He trained us. He’s been with us every step of the way.”"
     morgan "“Everything is going to turn out okay.”"
+    pause 2.0
 
     ## FADE IN to LABORATORY. There’s some sort of portal device in the background.
-    scene lab_1 with fade
+    scene lab_1 with dissolve
     
     ## FADE IN Heroes
     ## SPRITES Gavin A, Morgan N, Lance N
-    show gavin annoyed at grouped_center_pos1
-    show lance at grouped_center_pos2
-    show morgan at grouped_center_pos3
+    show gavin annoyed at grouped_right_gavin
+    show lance at grouped_right_lance
+    show morgan at grouped_right_morgan
+    with dissolve
+    
     lance "“What is that?”"
     lance "“I -- nevermind. Looks like this room is a dead end.”"
+    show gavin annoyed at grouped_center_gavin
+    show lance at grouped_center_lance
+    show morgan at grouped_center_morgan
+    with ease
     lance "“So... where’s the Darkness?”"
     morgan "“Close your eyes and feel for it. If it’s not here, it has to be close.”"
 
     ## LANCE and MORGAN close their eyes. Gavin doesn’t.
     ## (WILL MAKE these sprite variants if there’s time)
-    "show lance eyesclosed\nshow morgan eyesclosed"
+    show lance eyesclosed
+    show morgan eyesclosed
+    with dissolve
     morgan "“... Gavin, I know you’re not doing it.”"
-    gavin "“...”"
+    gavin "“{cps=30}...{/cps}”"
     gavin "“There’s no point.”"
     gavin "“We already know it’s here.”"
 
     ## SPRITES Morgan A
     ## MORGAN opens her eyes, annoyed.
-    show morgan annoyed
+    show morgan annoyed with dissolve
     morgan "“Yeah, but we have to {i}find{/i} it. So we can {i}kill{/i} it? Remember?”"
     gavin "“You guys {i}really{/i} haven’t figured it out, have you?”"
 
     ## SPRITE Lance A
     ## LANCE opens his eyes.
-    show lance annoyed
+    show lance annoyed with dissolve
     lance "“Figure {i}what{/i} out?”"
     guide "“Heroes -- Chosen.”"
     guide "“I need you to tell me something.”"
@@ -58,17 +69,23 @@ label ending_the_truth:
     lance "“What? Why?”"
 
     ## The screen begins to shake and pulsate red intermittently as dialogue progresses. I’ll let you decide if this is randomized or dialogue-progression based.
-    "Justin's plan: make this part typewriter-style and pulse the screen every X characters (whatever feels right)"
-    morgan "“{i}This place is not a place of honor... no highly esteemed deed is commemorated here... nothing valued is here.{/i}”"
-    morgan "“{i}What is here was dangerous and repulsive to us. This message is a warning about danger.{/i}”"
+    show overlay_red:
+        alpha 0.0
+        linear 2.0 alpha 0.3
+        linear 1.0 alpha 0.0
+        repeat
+    morgan "“{cps=20}{i}This place is not a place of honor... no highly esteemed deed is commemorated here... nothing valued is here.{/cps}{/i}”"
+    morgan "“{cps=20}{i}What is here was dangerous and repulsive to us. This message is a warning about danger.{/cps}{/i}”"
 
     ## SPRITE Lance N
     show lance neutral
-    lance "“{i}... The danger is in a particular location... it increases towards a center... the center of danger is here... of a particular size and shape, and below us.{/i}”"
-    lance "“{i}The danger is still present, in your time, as it was in ours.{/i}”"
-    gavin "“{i}The danger is to the body, and it can kill.{/i}”"
-    gavin "“{i}The form of the danger is an emanation of energy.{/i}”"
-    guide "“{i}The danger is unleashed only if you substantially disturb this place physically.{/i}”"
+    lance "“{cps=20}{i}... The danger is in a particular location... it increases towards a center... the center of danger is here... of a particular size and shape, and below us.{/cps}{/i}”"
+    lance "“{cps=20}{i}The danger is still present, in your time, as it was in ours.{/cps}{/i}”"
+    gavin "“{cps=20}{i}The danger is to the body, and it can kill.{/cps}{/i}”"
+    gavin "“{cps=20}{i}The form of the danger is an emanation of energy.{/cps}{/i}”"
+    guide "“{cps=20}{i}The danger is unleashed only if you substantially disturb this place physically.{/cps}{/i}”"
+    pause 1.0
+    hide overlay_red
     lance "“... So, what? How is that related to us, to here and now?”"
     guide "“It’s one of the few things that has hopped over continuously from world to world.”"
     guide "“As if something is meant to be learned from it... but humans never learn.”"
@@ -82,10 +99,11 @@ label ending_the_truth:
     guide "“It is energy. It kills, and can only be unleashed with the proper catalyst.”"
     morgan "“... That {i}does{/i} sound a lot like the Corruption.”"
     morgan "“But what are you saying when you say it’s...”"
+    pause 1.5
 
     ## SPRITE Morgan UNC
     ## MORGAN’s face becomes afraid
-    show morgan uncomfortable
+    show morgan uncomfortable with dissolve
     morgan "“... still here...”"
 
     ## SPRITE Lance ANG
@@ -96,20 +114,22 @@ label ending_the_truth:
     guide "“Everyone has to understand before the truth can be spoken plainly.”"
     guide "“It’s simply the nature of it.”"
     guide_dark "“But I can help things along.”"
-    guide_dark "“Close your eyes, and there I am.”"
-    guide_dark "“I can be heavy, yet I weigh not a gram.”"
-    guide_dark "“When I'm not repelled, I'm all you can see.”"
-    guide_dark "“Make sure I'm around, and all sense will be free.”"
+    guide_dark "“Close your eyes, and there I am.\nI can be heavy, yet I weigh not a gram.”"
+    guide_dark "“When I'm not repelled, I'm all you can see.\nMake sure I'm around, and all sense will be free.”"
     guide_dark "“{i}What am I?{/i}”"
-    lance "“...”"
-
+    pause 1.5
+    
     ## SPRITE Lance SP
     ## LANCE suddenly gets it.
+    lance "“{cps=30}...{/cps}”"
     show lance surprised
     lance "“{i}No.{/i}”"
 
     ## A BRIGHT FLASH of light indicates the beginning of THE HIDDEN DARKNESS beginning to take over the GUIDE’s body.
-    "show screen light_flash"
+    stop music fadeout 1.0
+    play music bgm_muloto fadein 1.0
+    show backdrop_white onlayer foremost at flash_overlay_quick_bright
+    pause 1.0
     guide "Oh, Gods. This is it."
     guide "Breathe. Breathe through it. I didn’t know it would hurt this much."
 
@@ -132,7 +152,8 @@ label ending_the_truth:
 
     ## BRIGHT FLASH
     ## SPRITES Gavin A, Morgan A, Lance A
-    "show screen light_flash"
+    show backdrop_white onlayer foremost at flash_overlay_quick_bright
+    pause 1.0
     show gavin annoyed
     show lance annoyed
     show morgan annoyed
@@ -158,7 +179,8 @@ label ending_the_truth:
     gavin "“There’s still a lot we don’t know, and he’s willing to tell us.”"
 
     ## BRIGHT FLASH
-    "show screen light_flash"
+    show backdrop_white onlayer foremost at flash_overlay_quick_bright
+    pause 1.0
     
     ## SPRITES Gavin A, Lance A
     show gavin annoyed
@@ -183,6 +205,7 @@ label ending_the_truth:
     guide "“Teachers find they have nothing more to teach, and yet cling to the old ways, for those are all they know -- and, in their eyes, all that {i}needs{/i} to be known.”"
     guide "“The institutions passed down to the next generation will always be tainted, because they have been tainted from the beginning.”"
     guide "“Thus always to tyrants.”"
+    pause 2.0
 
     ## SPRITE Morgan ANG
     show morgan angry
@@ -190,8 +213,9 @@ label ending_the_truth:
     guide "“It’s more complicated than that --”"
 
     ## BRIGHT FLASH, and a scream of pain.
-    "show screen light_flash"
-    "sound man_scream"
+    show backdrop_white onlayer foremost at flash_overlay_quick_bright
+    play sound scream_man
+    pause 1.0
 
     ## SPRITES Morgan UNC, Lance UNC
     show morgan uncomfortable
@@ -204,14 +228,18 @@ label ending_the_truth:
     guide "“So, the Darkness survives -- as does humanity.”"
 
     ## BRIGHT FLASH
-    "show screen light_flash"
+    show backdrop_white onlayer foremost at flash_overlay_quick_bright
+    pause 1.0
     guide_dark "“Or...”"
     guide_dark "“Or {i}this{/i} is the cycle where you imbeciles {i}finally{/i} fall, and with your power, I will claim the new world all for myself.”"
     guide_dark "“And so will be born a universe with {i}nothing but{/i} power, an indescribable, incomprehensible hell of chaos, impossible to tell where a soul ends and a star begins.”"
     guide_dark "“Everything will become one, never distinct, never connected -- and I will be its ruler. {i}Forever{/i}.”"
 
     ## BRIGHT FLASH
-    "show screen light_flash"
+    show backdrop_white onlayer foremost at flash_overlay_quick_bright
+    play sound scream_man
+    play music_extra2 foley_pulsing fadein 1.0
+    pause 1.0
     guide "“For now, killing the host of The Hidden Darkness is the {i}only{/i} way to anything resembling a victory. Imperfection is survival.”"
     guide "“Our battle -- light against dark -- should be powerful enough to activate the portal in this room, and give humanity their next chance.”"
 
@@ -221,8 +249,9 @@ label ending_the_truth:
     lance "“But -- but the curse should die if you die, too, right?”"
 
     ## BRIGHT FLASH and another scream of pain.
-    "show screen light_flash"
-    "sound man_scream"
+    show backdrop_white onlayer foremost at flash_overlay_quick_bright
+    play sound scream_man
+    pause 1.0
 
     ## SPRITE Gavin SD
     show gavin sad
@@ -234,35 +263,44 @@ label ending_the_truth:
     guide "“Morgan. Lance. Gavin. {i}Kill me --{/i}”"
 
     ## BRIGHT FLASH fading into black screen
-    "show screen light_flash"
-    scene backdrop_black
+    show backdrop_white onlayer foremost at flash_overlay_quick_bright_hold
+    call cut_music_and_sfx from _call_cut_music_and_sfx_2
+    pause 2.0
+    hide backdrop_white
+    show backdrop_black
     guide_dark "“Or become {i}kindling{/i} to my endless fire.”"
+    play sound evil_laughter
+    pause 1.0
     
     ## BATTLE with The Hidden Darkness
-    "call combat_hidden_darkness"
+    call combat_encounter_hidden_darkness from _call_combat_encounter_hidden_darkness
+    call restore_from_combat from _call_restore_from_combat_6
 
     ## END SCENE
-    call end_scene_fade_to_black
+    call end_scene_fade_to_black from _call_end_scene_fade_to_black_8
     return
 
 label ending_last_scene:
     ## NEW SCENE: Ending
     ## ART showing the Hidden Darkness jumping hosts to Gavin.
-    "Syd: need 'ART showing the Hidden Darkness jumping hosts to Gavin.'"
+    call cutscene_darkness_possesses_gavin from _call_cutscene_darkness_possesses_gavin
+    stop music_extra2
 
     ## OPEN PORTAL SFX, Music
-    play music bgm_delicate fadein 1.0
-    play music_extra foley_portal fadein 1.0
     guide_dark "“So, the cycle continues, this time.”"
     guide_dark "“You will be an intriguing one to see break under the weight of reality, the immutability of man.”"
     guide_dark "“Enjoy your new world...”"
-    gavin "(?) It won’t last. Thus, always."
+    $ gavin_name = "Gavin (?)"
+    gavin "{b}{cps=30}It won’t last. Thus, always.{/cps}{/b}"
+    $ gavin_name = "Gavin"
 
     ## SPRITES Gavin UNC, Morgan UNC, Lance SP
-    "Syd: do you want to return to the lab scene or keep the art onscreen for this?"
-    show gavin uncomfortable at grouped_center_pos1
-    show lance surprised at grouped_center_pos2
-    show morgan uncomfortable at grouped_center_pos3
+    scene lab_2 with dissolve
+    play music bgm_delicate fadein 1.0 
+    play music_extra foley_portal fadein 1.0
+    show gavin uncomfortable at grouped_center_gavin
+    show lance surprised at grouped_center_lance
+    show morgan uncomfortable at grouped_center_morgan
     with dissolve
     morgan "“Gavin!”"
 
@@ -284,6 +322,7 @@ label ending_last_scene:
     ## SPRITE Gavin ANG
     show gavin angry
     gavin "“Of course I do!”"
+    pause 1.0
 
     ## SPRITE Gavin A
     show gavin annoyed
@@ -301,7 +340,12 @@ label ending_last_scene:
 
     ## The HEROES fall silent. The portal is still open. The GUIDE lies dead.
     pause 1.5
+    show gavin sad at grouped_left_gavin
+    with move
 
+    show lance sad at grouped_right_lance
+    show morgan sad at grouped_right_morgan
+    with move
     ## SPRITE Lance SD
     show lance sad
     lance "“... Could we just not go?”"
@@ -335,9 +379,10 @@ label ending_last_scene:
     lance "“Because where does that leave us? What does that leave us with?”"
 
     ## The HEROES stand side by side in front of the portal.
-    show gavin at grouped_center_pos1
-    show lance at grouped_center_pos2
-    show morgan at grouped_center_pos3
+    show gavin at grouped_center_gavin
+    show lance at grouped_center_lance
+    show morgan at grouped_center_morgan
+    with move
     morgan "“He never {i}did{/i} tell us what it was going to look like.”"
 
     ## SPRITE Gavin A
@@ -350,22 +395,23 @@ label ending_last_scene:
     hide lance
     hide morgan
     with dissolve
-
+    pause 1.0
     ## Art of the heroes walking into the portal. Gavin first, Lance second, Morgan last. Morgan stops and sees a button on the machine that says “Global Alert System.” She hits the button with her fist, then walks through.
-    "Syd: need 'Art of the heroes walking into the portal. Gavin first, Lance second, Morgan last. Morgan stops and sees a button on the machine that says “Global Alert System.” She hits the button with her fist, then walks through.'"
+    call cutscene_morgan_presses_button from _call_cutscene_morgan_presses_button
     gavin "Maybe next time, things will be different."
 
     ## FADE OUT music/sxf
-    call end_scene_fade_to_black
+    call end_scene_fade_to_black_pause from _call_end_scene_fade_to_black_pause_3
 
     ## END
     return
 
 label ending_credits:
+    window hide
+    $ quick_menu = False
     play music bgm_i_am_not_alone fadein 1.0
-    "scene end_credits_creator_credits"
-    "scene end_credits_assets_used"
-    "scene end_credits_sources_consulted"
+    call screen credits
+    call screen the_end
     return
 
 # label ending_choices:

@@ -1,6 +1,6 @@
 label day2_morning:
     "DAY 2 - MORNING"
-    call hero_paths_choice
+    call hero_paths_choice from _call_hero_paths_choice
     return
 
 label day2_combat:
@@ -16,14 +16,14 @@ label day2_combat:
     guide "Or, maybe they’ll get insulted and bored, and leave."
     guide "Hopefully, I can make them last, so long as these kids aren’t too --"
 
-    show lance at grouped_left_pos2
+    show lance at grouped_center_lance
     with easeinleft
     show lance annoyed
     lance "“See, this? This is just insulting.”"
     guide " -- rough on them."
 
-    show gavin at grouped_left_pos1
-    show morgan at grouped_left_pos3
+    show gavin at grouped_center_gavin
+    show morgan at grouped_center_morgan
     with easeinleft
     guide "“You failed your task yesterday, which was basic. So, we’re going back to the basics.”"
     lance '“You said you were testing us, not that we were supposed to win.”'
@@ -37,13 +37,11 @@ label day2_combat:
     guide "Come to think of it... I think I’ve hardly heard her speak ten words."
     guide "“Girl.”"
 
-    show morgan surprised
-    ## MOTION bounce MORGAN
-    "JUSTIN: implement 'MOTION bounce MORGAN'"
+    show morgan surprised at sprite_bounce_light
     guide "“Have you no input?”"
 
     show morgan neutral
-    morgan "“...”"
+    morgan "“{cps=30}...{/cps}”"
     guide "I can see in her eyes this world has not been kind to her."
     guide_dark "It will not get any kinder. It is not our job to make it nice and cushiony for her."
     guide "“If you are to speak to anyone, at least speak with your partners.”"
@@ -58,14 +56,15 @@ label day2_combat:
     guide "“Show me your techniques, all of you.”"
 
     ## BEGIN COMBAT
-    "call combat_encounter_training_dummies"
-
+    call combat_encounter_training_dummies from _call_combat_encounter_training_dummies
+    
     ## AFTER COMBAT, the HEROES are bored and unimpressed.
     scene cabin_exterior with fade
     play music bgm_soulful_crescendo fadein 1.0
-    show gavin at grouped_left_pos1
-    show lance angry at grouped_left_pos2
-    show morgan at grouped_left_pos3
+    show gavin at grouped_center_gavin
+    show lance angry at grouped_center_lance
+    show morgan at grouped_center_morgan
+    call restore_from_combat from _call_restore_from_combat_1
     lance "“Is this supposed to be a joke to you?!”"
 
     show gavin uncomfortable
@@ -79,20 +78,20 @@ label day2_combat:
     guide_dark "I like that tall one. The others would do well to learn from him."
     guide "He’s brash and arrogant. He’s going to get them in trouble. It’s like he forgot all about yesterday’s loss."
     guide_dark "He wants to grow. He wants to become powerful. We need that."
-    guide "“...”"
+    guide "“{cps=30}...{/cps}”"
     guide "“You want more of a fight? Fine.”"
     guide "It’s been a while since I cast this spell..."
     guide "Spells were more Gwen’s thing. We’ll see if I remember..."
 
     ## BEGIN COMBAT with Training Dummy (Enhanced)
-    "call combat_encounter_training_dummies_enhanced"
-
+    call combat_encounter_training_dummies_enhanced from _call_combat_encounter_training_dummies_enhanced
+    
     ## AFTER COMBAT, LANCE is far more satisfied.
     scene cabin_exterior with fade
-    play music bgm_soulful_crescendo fadein 1.0
-    show gavin at grouped_left_pos1
-    show lance at grouped_left_pos2
-    show morgan at grouped_left_pos3
+    show gavin at grouped_center_gavin
+    show lance at grouped_center_lance
+    show morgan at grouped_center_morgan
+    call restore_from_combat from _call_restore_from_combat_2
     lance "“Better. We actually used our skills a bit.”"
     gavin "“I guess that was pretty fun, actually.”"
 
@@ -122,21 +121,28 @@ label day2_combat:
     guide "“I --”"
     gavin "“How long have you had it? How did you fertilize the soil? One time, I saw a garden that was fertilized with --”"
     guide_dark "“Hush, boy.”"
+    pause 0.5
 
     ## SPRITES all SP
     ## GAVIN and the others are surprised by the GUIDE’S tone. It’s harsher than they’re used to.
     show gavin surprised
     show lance surprised
     show morgan surprised
+    pause 0.5
     guide "“... Come to the garden and I’ll tell you.”"
 
     ## GAVIN goes off screen.
     hide gavin with easeoutleft
-
+    pause 0.5
     ## FADE OUT to black
     ## FADE OUT Music/sfx
+    hide morgan
+    hide lance
+    with dissolve
+    pause 0.5
+    call end_scene_fade_to_black from _call_end_scene_fade_to_black_3
+
     ## END SCENE
-    call end_scene_fade_to_black
     return
 
 label day2_dinner:
@@ -152,14 +158,14 @@ label day2_dinner:
 
     ## FADE IN to CABIN INTERIOR, FADE IN Fireplace sfx, FADE IN Music. For the sake of time, for now this is just the three HEROES directly in front of the screen side by side.
     scene cabin_interior with fade
-    play music_extra foley_fireplace
-    play music bgm_transient fadein 1.0
-    show gavin at grouped_left_pos1
-    show lance at grouped_left_pos2
-    show morgan at grouped_left_pos3
+    play music_extra foley_fireplace volume 0.5
+    play music bgm_the_satyr_dance fadein 1.0
+    show gavin at grouped_center_gavin
+    show lance at grouped_center_lance
+    show morgan at grouped_center_morgan
     with dissolve
 
-    show gavin happy
+    show gavin happy with dissolve
     gavin "“... And we didn’t even have to mix in clay or shredded bark for substance!”"
     guide "“I thought that practice died years ago.”"
     
@@ -186,7 +192,7 @@ label day2_dinner:
     guide "“And your origin?”"
     
     show morgan sad
-    morgan "“...”"
+    morgan "“{cps=30}...{/cps}”"
     
     show gavin sad
     gavin "“She... doesn’t like to talk about the time before she was with me.”"
@@ -239,8 +245,8 @@ label day2_dinner:
     label day2_dinner_tell_them:
         guide "“Very well, then.”"
         ## FADE OUT to black, then FADE IN to [I’ll provide an image but think Calamity Ganon meets Venom)
-        scene backdrop_black with Fade(0.5, 1.0, 0.5)
         scene hidden_darkness with fade
+        play music bgm_rise_of_the_immortal_warlord fadein 1.0
         guide "“The Hidden Darkness is indeed a malevolent force you must find, but its origin may be closer than you think, or would wish.”"
         guide "“It started with {i}one{/i} person. Just one.”"
         guide "“It wasn’t born out of malice, or hate. It wasn’t created intentionally, but it didn’t come from nothing, either. The Hidden Darkness is a monster, yes, but it was a monster no one wished upon anyone.”"
@@ -253,10 +259,10 @@ label day2_dinner:
         guide "“No doubt you have seen it.”"
 
         ## FADE back to CABIN INTERIOR
-        scene cabin_interior
-        show gavin sad at grouped_left_pos1
-        show lance at grouped_left_pos2
-        show morgan at grouped_left_pos3
+        scene cabin_interior with dissolve
+        show gavin sad at grouped_center_gavin
+        show lance at grouped_center_lance
+        show morgan at grouped_center_morgan
         lance "“The Corrupted.”"
         guide "“Yes.”"
         guide "“Tell me what you know about them.”"
@@ -265,10 +271,12 @@ label day2_dinner:
         morgan "“They’re hostile to any and all known life -- human, animal, fungi -- all of it.”"
         morgan "“And it would rather die than flee from a fight... because it knows if it can hurt you and get in your blood, even if it’s dead... it can kill you.”"
         guide "“I’m impressed.”"
+        stop music fadeout 1.0
+
         gavin "“So if the Corrupted are part of the Hidden Darkness, then destroying the Darkness would destroy all the Corrupted, too?”"
         guide "“Of that, I’m not entirely sure. In a sense, I suppose the answer is yes...”"
 
-        show gavin surprised
+        show gavin surprised with dissolve
         gavin "“Well, how do we find it? How do we defeat it? The sooner we can do that, the sooner we can save everyone!”"
         guide "Were it so simple..."
         guide_dark "They will fight it. It is their destiny."
@@ -279,11 +287,12 @@ label day2_dinner:
         guide "“It’s the ‘Hidden Darkness’ for a reason, after all.”"
         guide "“As for defeating it...”"
         guide "“... I don’t know.”"
+        pause 0.75
 
         show lance annoyed
         lance "“You don’t know?”"
         
-        show lance neutral
+        show lance neutral with dissolve
         lance "“Well, if the Roots didn’t know, I guess you wouldn’t.”"
         guide "“It’s getting late. If you’re all finished with dinner, you should rest.”"
         guide "“But clean your plates first.”"
@@ -301,7 +310,7 @@ label day2_dinner:
 
     ## FADE OUT
     ## FADE OUT Music/sfx
-    call end_scene_fade_to_black
+    call end_scene_fade_to_black from _call_end_scene_fade_to_black_4
     
     ## END SCENE
     return
@@ -311,7 +320,7 @@ label day2_dream:
     ## FADE IN to misty background.
     ## RADIO sound effect (with unintelligible dialogue) in the background.
     scene backdrop_mist with fade
-    play music_extra foley_radio_chatter
+    play music_extra foley_radio_chatter volume 1.0
     
     radio "{i}“... The promised aid to the west has been postponed for another month due to shortages in both food and fuel across the coast. Reports state that if help does not arrive in time, thousands more lives will be lost.”{/i}"
     radio "{i}“In other news, the epidemic in the Chain Islands has reached its all-time peak, with the number of infected totaling over 50\% of the population there...”{/i}"
@@ -320,37 +329,49 @@ label day2_dream:
 
     ## The RADIO sound effect ends. Replace sfx with a kitchen sound (dishwashing, dinner, etc). GWEN, friend to the GUIDE, is with him, wherever he currently is.
     stop music_extra
+    play music bgm_mellow_immersive_and_unstable fadein 1.0
     play music_extra foley_washing_dishes fadein 1.0
 
     gwen "“I mean, we could go listen to it elsewhere?”"
     mother "“I don’t want you kids worrying about that kind of stuff. That’s our job. {i}Your{/i} job is to focus on your schoolwork, play outside when the sun shines, and go to bed at a reasonable hour.”"
+    pause 0.25
+    
     guide "Even then, I knew the reason the world was in such a state was because the leaders of our world hadn’t been concerned about what mattered to begin with."
     guide "And I knew that my mother knew."
     guide "What she didn’t know, was that {i}I{/i} knew. That I wasn’t a fool. That Gwen wasn’t a fool."
     guide "We all knew something was wrong before things got worse."
+    pause 0.25
+
     gwen "“Ma’am, you say that as if going to bed at a reasonable hour has ever been a reasonable request.”"
     gwen "“These essays don’t type themselves.”"
     guide "“Gwen, you can hardly type the word ‘the’ without looking down at the keyboard. Doesn’t your mom still help you?”"
     gwen "“Oh, shut up.”"
     mother "“Gwen, we don’t use that language in this house.”"
     gwen "“Sorry, ma’am.”"
+    pause 0.25
+
     guide_dark "Mother always was precious like that."
     guide "I don’t need your sarcasm. It’s bad enough you decided to wake up the {i}moment{/i} those kids were on my doorstep."
     guide_dark "Don’t lie to yourself. You know I was awake {i}long{/i} before that."
+    pause 0.25
+
     guide "“We could go to the park across the street or something.”"
     mother "“If you’re going to the park, go next door and ask Lucas if he can go too.”"
     guide "“Lucas? Lucas is always sick, Mom.”"
     mother "“That doesn’t mean you shouldn’t ask.”"
     mother "“Besides, I know you kids go over there to just sit on the grass anyways. That’s not out of Lucas’ capabilities.”"
+    pause 0.25
+
     guide "She didn’t know Lucas hadn’t been out of the house in three weeks."
     guide "The air quality was just too hard on his lungs."
+    stop music_extra fadeout 2.0
+    
     guide_dark "It’s amazing, then, what the bombs dropping did for his body, isn’t it? All it took was a little war to get him running."
     guide "He barely made it from one day to the next! If his family had been able to afford his medical treatments in the first place, he --!"
-    guide "..."
+    guide "{cps=30}...{/cps}"
     guide "I am not humoring you."
 
     ## FADE OUT SFX
-    stop music_extra fadeout 2.0
     guide_dark "I don’t need you to."
     guide_dark "You and I both know well the start of the end of the world was the greatest medicine Lucas ever received."
     guide_dark "So much of it was all in his head."
@@ -401,7 +422,8 @@ label day2_dream:
     label day2_dream_choices_cycle:
         guide "It was the byproduct of the cycle that has been repeating itself since the start of history."
         guide "The delusion of endless growth could only sustain itself until there was nothing left to grow with."
-        guide "Empires rose, and then when things had the potential to become simple in a life of plenty, a false scarcity was imposed to maintain power over the people. And then when those empires found themselves starving in the wake of their  self-imposed emotional and material celibacy, they fell."
+        guide "Empires rose, and then when things had the potential to become simple in a life of plenty, a false scarcity was imposed to maintain power over the people."
+        guide "And then when those empires found themselves starving in the wake of their self-imposed emotional and material celibacy, they fell."
         guide "When true scarcity arrived, and there was no one and nothing left to reverse it, it could only mean certain death."
         jump day2_dream_choices_reconvene
     
@@ -415,12 +437,13 @@ label day2_dream:
         guide_dark "And reformed him into something that could {i}survive{/i}."
         guide_dark "You don’t think this will end the same way?"
         guide "To what end?"
-        guide "..."
+        guide "{cps=30}...{/cps}"
         guide "... "
     
     ## FADE OUT Music/SFX
     ## FADE TO BLACK
-    call end_scene_fade_to_black
+    call end_scene_fade_to_black from _call_end_scene_fade_to_black_5
+    pause 1.0
     guide "Does it always have to be this way?"
 
     ## END SCENE
